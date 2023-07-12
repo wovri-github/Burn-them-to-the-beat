@@ -1,0 +1,61 @@
+[gd_scene load_steps=14 format=3 uid="uid://dgupqv8p0xivx"]
+
+[ext_resource type="Texture2D" uid="uid://cjpobbi50a7l6" path="res://Assets/icons/ChangingIcons/air-force.svg" id="1_jvier"]
+[ext_resource type="Texture2D" uid="uid://7y7nuf0cakq" path="res://Assets/icons/ChangingIcons/allied-star.svg" id="2_n5rgk"]
+[ext_resource type="Texture2D" uid="uid://dj2u85fheiriy" path="res://Assets/icons/ChangingIcons/balkenkreuz.svg" id="3_kemk1"]
+[ext_resource type="Texture2D" uid="uid://8jycs5f32cky" path="res://Assets/icons/ChangingIcons/bat.svg" id="4_wcic5"]
+[ext_resource type="Texture2D" uid="uid://dv85tu3u6b7l0" path="res://Assets/icons/ChangingIcons/clubs.svg" id="5_1q5op"]
+[ext_resource type="Texture2D" uid="uid://c8yo2cw3dggwm" path="res://Assets/icons/ChangingIcons/diamonds.svg" id="6_1cmjd"]
+[ext_resource type="Texture2D" uid="uid://bn0vxd0us6lr3" path="res://Assets/icons/ChangingIcons/divided-square.svg" id="7_eyumu"]
+[ext_resource type="Texture2D" uid="uid://w1fj1agorfs8" path="res://Assets/icons/ChangingIcons/hearts.svg" id="8_mfv30"]
+[ext_resource type="Texture2D" uid="uid://bm1x0bns320vc" path="res://Assets/icons/ChangingIcons/iron-cross.svg" id="9_16cfm"]
+[ext_resource type="Texture2D" uid="uid://cvedujjran6y5" path="res://Assets/icons/ChangingIcons/pentacle.svg" id="10_ytqgx"]
+[ext_resource type="Texture2D" uid="uid://bi5e2jbqo2yk7" path="res://Assets/icons/ChangingIcons/spades.svg" id="11_esoxo"]
+[ext_resource type="Script" path="res://Code/RandomBox.gd" id="12_yeq8k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bovrn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jvier")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n5rgk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kemk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wcic5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1q5op")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1cmjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_eyumu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mfv30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_16cfm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ytqgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_esoxo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RandomBox" type="AnimatedSprite2D"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_bovrn")
+speed_scale = 0.0
+script = ExtResource("12_yeq8k")

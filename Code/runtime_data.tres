@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="RuntimeData" load_steps=2 format=3 uid="uid://c163liyttkno0"]
+
+[ext_resource type="Script" path="res://Code/runtime_data.gd" id="1_dl6un"]
+
+[resource]
+script = ExtResource("1_dl6un")
+factor_progress = 90.0

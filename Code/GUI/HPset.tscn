@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://cyarsbbwewu6f"]
+
+[ext_resource type="PackedScene" uid="uid://bycawr0huid1r" path="res://Code/GUI/Heart.tscn" id="1_22unb"]
+[ext_resource type="Script" path="res://Code/GUI/HP.gd" id="1_xdxiu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qx45a"]
+load_path = "res://.godot/imported/2.bmp-d029c88fb7d20d65860bd61b1b14b949.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4jn7j"]
+load_path = "res://.godot/imported/1.bmp-9e5619b5e42a95db18be31b26548a787.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wy7i8"]
+load_path = "res://.godot/imported/0.bmp-145d7117764079aaaa08235435c57d26.ctex"
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_6qqtj"]
+frames = 3
+pause = true
+frame_0/texture = SubResource("CompressedTexture2D_qx45a")
+frame_1/texture = SubResource("CompressedTexture2D_4jn7j")
+frame_1/duration = 1.0
+frame_2/texture = SubResource("CompressedTexture2D_wy7i8")
+frame_2/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_vv2k0"]
+frames = 3
+pause = true
+frame_0/texture = SubResource("CompressedTexture2D_qx45a")
+frame_1/texture = SubResource("CompressedTexture2D_4jn7j")
+frame_1/duration = 1.0
+frame_2/texture = SubResource("CompressedTexture2D_wy7i8")
+frame_2/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_wcwvs"]
+frames = 3
+pause = true
+frame_0/texture = SubResource("CompressedTexture2D_qx45a")
+frame_1/texture = SubResource("CompressedTexture2D_4jn7j")
+frame_1/duration = 1.0
+frame_2/texture = SubResource("CompressedTexture2D_wy7i8")
+frame_2/duration = 1.0
+
+[node name="HP" type="PanelContainer"]
+script = ExtResource("1_xdxiu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Heart1" parent="HBoxContainer" instance=ExtResource("1_22unb")]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_6qqtj")
+
+[node name="Heart2" parent="HBoxContainer" instance=ExtResource("1_22unb")]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_vv2k0")
+
+[node name="Heart3" parent="HBoxContainer" instance=ExtResource("1_22unb")]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_wcwvs")

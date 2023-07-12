@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctaap8kjywvu1"]
+
+[ext_resource type="AudioStream" uid="uid://b2t2jpbeb7xro" path="res://Assets/Music/Defrini - Biogas-Music.mp3" id="1_aqeif"]
+[ext_resource type="Script" path="res://Code/Game/conductor.gd" id="2_ehdjf"]
+
+[node name="Conductor" type="AudioStreamPlayer"]
+stream = ExtResource("1_aqeif")
+script = ExtResource("2_ehdjf")
+
+[node name="OffsetBeatTimer" type="Timer" parent="."]
+wait_time = 73.923
+
+[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="timeout" from="OffsetBeatTimer" to="." method="_on_offset_beat_timer_timeout"]

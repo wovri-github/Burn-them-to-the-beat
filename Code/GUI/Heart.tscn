@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bycawr0huid1r"]
+
+[ext_resource type="Script" path="res://Code/GUI/Heart.gd" id="4_wfydw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qx45a"]
+load_path = "res://.godot/imported/2.bmp-d029c88fb7d20d65860bd61b1b14b949.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4jn7j"]
+load_path = "res://.godot/imported/1.bmp-9e5619b5e42a95db18be31b26548a787.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wy7i8"]
+load_path = "res://.godot/imported/0.bmp-145d7117764079aaaa08235435c57d26.ctex"
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_5f1bi"]
+frames = 3
+pause = true
+frame_0/texture = SubResource("CompressedTexture2D_qx45a")
+frame_1/texture = SubResource("CompressedTexture2D_4jn7j")
+frame_1/duration = 1.0
+frame_2/texture = SubResource("CompressedTexture2D_wy7i8")
+frame_2/duration = 1.0
+
+[node name="Heart" type="TextureRect"]
+offset_right = 36.0
+offset_bottom = 32.0
+texture = SubResource("AnimatedTexture_5f1bi")
+script = ExtResource("4_wfydw")

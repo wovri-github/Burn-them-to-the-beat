@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=3 uid="uid://bjq88vs4wuxwq"]
+
+[ext_resource type="Script" path="res://Code/fireing_humans.gd" id="1_xkntq"]
+[ext_resource type="Texture2D" uid="uid://e52cetmh23rl" path="res://Assets/bluefire.png" id="2_qclpc"]
+[ext_resource type="Texture2D" uid="uid://35ykn8hqaee6" path="res://Assets/fire.png" id="3_wp5k4"]
+[ext_resource type="Script" path="res://Code/Fire.gd" id="4_f6vun"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoimr"]
+atlas = ExtResource("2_qclpc")
+region = Rect2(0, 0, 15, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i561b"]
+atlas = ExtResource("2_qclpc")
+region = Rect2(15, 0, 15, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ph52"]
+atlas = ExtResource("2_qclpc")
+region = Rect2(30, 0, 15, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hovu"]
+atlas = ExtResource("2_qclpc")
+region = Rect2(45, 0, 15, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f7hp"]
+atlas = ExtResource("3_wp5k4")
+region = Rect2(0, 0, 15, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yii2f"]
+atlas = ExtResource("3_wp5k4")
+region = Rect2(15, 0, 15, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7ybi"]
+atlas = ExtResource("3_wp5k4")
+region = Rect2(30, 0, 15, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3iel"]
+atlas = ExtResource("3_wp5k4")
+region = Rect2(45, 0, 15, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_56inx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoimr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i561b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ph52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hovu")
+}],
+"loop": true,
+"name": &"bluefire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f7hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yii2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7ybi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3iel")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 16.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1iue"]
+size = Vector2(7.33333, 18.6667)
+
+[node name="FireingHumans" type="Node2D"]
+script = ExtResource("1_xkntq")
+
+[node name="Ground" type="ColorRect" parent="."]
+offset_top = 472.0
+offset_right = 511.0
+offset_bottom = 512.0
+color = Color(0.368627, 0.188235, 0.168627, 1)
+
+[node name="FirePlace" type="ColorRect" parent="."]
+offset_left = 250.0
+offset_top = 491.0
+offset_right = 262.0
+offset_bottom = 500.0
+color = Color(0.160784, 0.152941, 0.14902, 1)
+
+[node name="HumanSpawn" type="Node2D" parent="."]
+position = Vector2(549, 495)
+
+[node name="Fire" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(255, 492)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_56inx")
+animation = &"fire"
+frame_progress = 0.301707
+offset = Vector2(0, -3)
+script = ExtResource("4_f6vun")
+
+[node name="FlameTimer" type="Timer" parent="Fire"]
+wait_time = 0.2
+
+[node name="Area2D" type="Area2D" parent="Fire"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fire/Area2D"]
+position = Vector2(0, -1.33334)
+shape = SubResource("RectangleShape2D_b1iue")
+
+[connection signal="timeout" from="Fire/FlameTimer" to="Fire" method="_on_flame_timer_timeout"]

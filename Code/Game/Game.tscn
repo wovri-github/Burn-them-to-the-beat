@@ -1,0 +1,238 @@
+[gd_scene load_steps=15 format=3 uid="uid://h80ckumhkhx1"]
+
+[ext_resource type="Script" path="res://Code/Game/Game.gd" id="1_y51tq"]
+[ext_resource type="Script" path="res://Code/Game/RandomPool.gd" id="2_ac1w3"]
+[ext_resource type="PackedScene" uid="uid://dgupqv8p0xivx" path="res://Code/RandomBox.tscn" id="2_bt0xe"]
+[ext_resource type="Resource" uid="uid://c163liyttkno0" path="res://Code/runtime_data.tres" id="2_kjf7b"]
+[ext_resource type="Script" path="res://Code/Game/MusicBars.gd" id="4_1dme2"]
+[ext_resource type="PackedScene" uid="uid://dkour2dh7ebam" path="res://Code/Player.tscn" id="4_soa6v"]
+[ext_resource type="PackedScene" uid="uid://d8ys1h6r0d4t" path="res://Code/SpaceEffect/BlockGroup.tscn" id="5_qe3rx"]
+[ext_resource type="Script" path="res://Code/Game/BoxManager.gd" id="6_2nm8j"]
+[ext_resource type="Script" path="res://Code/Game/DanceManager.gd" id="6_fkh8t"]
+[ext_resource type="PackedScene" uid="uid://482qvsvj2xx2" path="res://Code/DancingGoblin.tscn" id="6_jjuxq"]
+[ext_resource type="Script" path="res://Code/Game/HitGoblinManager.gd" id="9_85fpq"]
+[ext_resource type="PackedScene" uid="uid://ctaap8kjywvu1" path="res://Code/Game/conductor.tscn" id="12_exmtr"]
+[ext_resource type="Script" path="res://Code/Game/tempo_controller.gd" id="13_pxhu1"]
+[ext_resource type="PackedScene" uid="uid://bjq88vs4wuxwq" path="res://Code/fireing_humans.tscn" id="14_cyj3i"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_y51tq")
+_runtime_data = ExtResource("2_kjf7b")
+
+[node name="RandomPool" type="Node" parent="."]
+script = ExtResource("2_ac1w3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 61.0
+offset_top = 384.0
+offset_right = 452.0
+offset_bottom = 424.0
+color = Color(0.368627, 0.188235, 0.168627, 1)
+
+[node name="MusicBars" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("4_1dme2")
+metadata/_edit_lock_ = true
+
+[node name="BlockGroup1" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 76.0
+offset_top = 410.0
+offset_right = 76.0
+offset_bottom = 410.0
+
+[node name="BlockGroup2" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 92.0
+offset_top = 410.0
+offset_right = 92.0
+offset_bottom = 410.0
+
+[node name="BlockGroup3" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 127.0
+offset_top = 410.0
+offset_right = 127.0
+offset_bottom = 410.0
+
+[node name="BlockGroup4" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 143.0
+offset_top = 410.0
+offset_right = 143.0
+offset_bottom = 410.0
+
+[node name="BlockGroup5" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 159.0
+offset_top = 410.0
+offset_right = 159.0
+offset_bottom = 410.0
+
+[node name="BlockGroup6" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 175.0
+offset_top = 410.0
+offset_right = 175.0
+offset_bottom = 410.0
+
+[node name="BlockGroup7" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 210.0
+offset_top = 410.0
+offset_right = 210.0
+offset_bottom = 410.0
+
+[node name="BlockGroup8" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 226.0
+offset_top = 410.0
+offset_right = 226.0
+offset_bottom = 410.0
+
+[node name="BlockGroup9" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 269.0
+offset_top = 410.0
+offset_right = 269.0
+offset_bottom = 410.0
+
+[node name="BlockGroup10" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 304.0
+offset_top = 410.0
+offset_right = 304.0
+offset_bottom = 410.0
+
+[node name="BlockGroup11" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 320.0
+offset_top = 410.0
+offset_right = 320.0
+offset_bottom = 410.0
+
+[node name="BlockGroup12" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 336.0
+offset_top = 410.0
+offset_right = 336.0
+offset_bottom = 410.0
+
+[node name="BlockGroup13" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 365.0
+offset_top = 410.0
+offset_right = 365.0
+offset_bottom = 410.0
+
+[node name="BlockGroup14" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 399.0
+offset_top = 410.0
+offset_right = 399.0
+offset_bottom = 410.0
+
+[node name="BlockGroup15" parent="MusicBars" instance=ExtResource("5_qe3rx")]
+offset_left = 415.0
+offset_top = 410.0
+offset_right = 415.0
+offset_bottom = 410.0
+
+[node name="DanceManager" type="Node2D" parent="."]
+script = ExtResource("6_fkh8t")
+
+[node name="DancingGoblins" type="Node2D" parent="DanceManager"]
+
+[node name="DancingGoblin1" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(71, 229)
+rotation = 0.160599
+
+[node name="DancingGoblin2" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(490, 280)
+rotation = -0.139821
+scale = Vector2(2.5, 2.5)
+
+[node name="Goblin" parent="DanceManager/DancingGoblins/DancingGoblin2" index="0"]
+flip_h = true
+
+[node name="DancingGoblin3" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(463, 460)
+rotation = 0.00588244
+
+[node name="Goblin" parent="DanceManager/DancingGoblins/DancingGoblin3" index="0"]
+flip_h = true
+
+[node name="DancingGoblin4" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(413, 460)
+rotation = 0.0113119
+
+[node name="DancingGoblin5" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(44, 428)
+rotation = -0.000930503
+scale = Vector2(1.7, 1.7)
+
+[node name="DancingGoblin6" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(237, 232)
+rotation = -0.0153587
+scale = Vector2(2.2, 2.2)
+
+[node name="DancingGoblin7" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(170, 94)
+rotation = -0.00406003
+scale = Vector2(2.3, 2.3)
+
+[node name="Goblin" parent="DanceManager/DancingGoblins/DancingGoblin7" index="0"]
+position = Vector2(1.99592, 1.00811)
+
+[node name="ColorRect" parent="DanceManager/DancingGoblins/DancingGoblin7" index="1"]
+visible = false
+
+[node name="DancingGoblinGod" parent="DanceManager" instance=ExtResource("6_jjuxq")]
+visible = false
+modulate = Color(1, 1, 1, 0.25098)
+position = Vector2(262, 212)
+scale = Vector2(25, 25)
+
+[node name="BoxManager" type="Node2D" parent="."]
+script = ExtResource("6_2nm8j")
+
+[node name="RandomBoxL" parent="BoxManager" instance=ExtResource("2_bt0xe")]
+visible = false
+position = Vector2(150, 358)
+
+[node name="RandomBoxR" parent="BoxManager" instance=ExtResource("2_bt0xe")]
+visible = false
+position = Vector2(361.781, 360.694)
+
+[node name="HitGoblinManager" type="Node2D" parent="."]
+script = ExtResource("9_85fpq")
+
+[node name="GoblinR" parent="HitGoblinManager" instance=ExtResource("4_soa6v")]
+visible = false
+position = Vector2(309.781, 333.694)
+scale = Vector2(3.28125, 4.85484)
+_is_attacking_right = true
+
+[node name="GoblinR2" parent="HitGoblinManager" instance=ExtResource("4_soa6v")]
+visible = false
+position = Vector2(427.781, 333.694)
+scale = Vector2(3.28125, 4.85484)
+flip_h = true
+_is_attacking_right = true
+
+[node name="GoblinL" parent="HitGoblinManager" instance=ExtResource("4_soa6v")]
+position = Vector2(221, 331)
+scale = Vector2(3.28125, 4.85484)
+flip_h = true
+_is_attacking_left = true
+
+[node name="GoblinL2" parent="HitGoblinManager" instance=ExtResource("4_soa6v")]
+visible = false
+position = Vector2(88, 332)
+scale = Vector2(3.28125, 4.85484)
+_is_attacking_left = true
+
+[node name="Conductor" parent="." instance=ExtResource("12_exmtr")]
+
+[node name="TempoController" type="Node" parent="."]
+script = ExtResource("13_pxhu1")
+
+[node name="FireingHumans" parent="." instance=ExtResource("14_cyj3i")]
+
+[editable path="DanceManager/DancingGoblins/DancingGoblin2"]
+[editable path="DanceManager/DancingGoblins/DancingGoblin3"]
+[editable path="DanceManager/DancingGoblins/DancingGoblin7"]

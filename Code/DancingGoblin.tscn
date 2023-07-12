@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://482qvsvj2xx2"]
+
+[ext_resource type="PackedScene" uid="uid://dkour2dh7ebam" path="res://Code/Player.tscn" id="1_4la5i"]
+
+[node name="DancingGoblin" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="Goblin" parent="." instance=ExtResource("1_4la5i")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = 12.0
+offset_right = 16.0
+offset_bottom = 15.0
