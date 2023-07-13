@@ -1,7 +1,7 @@
 extends Control
 
-const floating_difference_tscn = preload("res://Code/GUI/Score/score_difference.tscn")
 var actual_score: int = 0
+const floating_difference_tscn = preload("res://Code/GUI/Score/score_difference.tscn")
 @onready var score_label = %ScoreLabel
 @onready var score_value_label = %ScoreValue
 @onready var floating_container = $FloatingContainer

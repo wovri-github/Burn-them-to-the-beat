@@ -2,26 +2,52 @@
 
 [ext_resource type="Script" path="res://Code/GUI/Heart.gd" id="4_wfydw"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qx45a"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cp8j8"]
 load_path = "res://.godot/imported/2.bmp-d029c88fb7d20d65860bd61b1b14b949.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4jn7j"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_85s34"]
 load_path = "res://.godot/imported/1.bmp-9e5619b5e42a95db18be31b26548a787.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wy7i8"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c1pkx"]
 load_path = "res://.godot/imported/0.bmp-145d7117764079aaaa08235435c57d26.ctex"
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_5f1bi"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_eqhnw"]
+resource_local_to_scene = true
 frames = 3
 pause = true
-frame_0/texture = SubResource("CompressedTexture2D_qx45a")
-frame_1/texture = SubResource("CompressedTexture2D_4jn7j")
+frame_0/texture = SubResource("CompressedTexture2D_cp8j8")
+frame_1/texture = SubResource("CompressedTexture2D_85s34")
 frame_1/duration = 1.0
-frame_2/texture = SubResource("CompressedTexture2D_wy7i8")
+frame_2/texture = SubResource("CompressedTexture2D_c1pkx")
 frame_2/duration = 1.0
 
-[node name="Heart" type="TextureRect"]
-offset_right = 36.0
-offset_bottom = 32.0
-texture = SubResource("AnimatedTexture_5f1bi")
+[node name="Heart" type="Control"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_wfydw")
+
+[node name="Texture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -16.0
+offset_right = 18.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_eqhnw")

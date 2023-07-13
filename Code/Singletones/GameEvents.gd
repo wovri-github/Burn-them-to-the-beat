@@ -15,4 +15,4 @@ signal setted_beat_multiplier(beat_multiplier: int)
 
 signal beat(_song_position_in_beats: int, _measure: int, tempo: int)
 signal scored(score)
-signal losed_hp(hp)
+signal hp_changed(hp)

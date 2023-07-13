@@ -23,6 +23,7 @@ GameEvents="*res://Code/Singletones/GameEvents.tscn"
 
 window/size/viewport_width=512
 window/size/viewport_height=512
+window/size/initial_screen=2
 window/stretch/mode="canvas_items"
 
 [input]

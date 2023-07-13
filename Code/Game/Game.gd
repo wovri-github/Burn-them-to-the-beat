@@ -3,7 +3,7 @@ extends Node2D
 const PROGRESS_FACTOR_DEPRECIATION = 75
 const SPACE_ALLOWANCE_MSEC = 100
 const BEAT_TIME_MSEC = 571
-const MAX_HP = 10
+const MAX_HP = Defaluts.MAX_HP
 @export var _runtime_data: RuntimeData
 var _current_number_pool: Array
 var _correct_number: int
@@ -16,7 +16,7 @@ var _factor_total: int:
 var _disable_points = false
 var _beat_multiplier: int = 0
 var score = 0
-var hp = MAX_HP
+var hp = Defaluts.STARTING_HP
 @onready var fireing_humans = $FireingHumans
 
 
@@ -114,7 +114,7 @@ func lose_hp():
 		hp = 0
 		print("GameOver")
 	print("Hp: " + str(hp))
-	GameEvents.emit_signal("losed_hp", hp)
+	GameEvents.emit_signal("hp_changed", hp)
 
 
 func _on_fireing_humans_flamed(_is_human_burned):

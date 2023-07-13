@@ -23,9 +23,6 @@ func _ready():
 #	GameEvents.music_beat.connect(_on_music_bit_timeout)
 #	GameEvents.factor_total_changed.connect(_on_factor_total_changed)
 #	GameEvents.setted_beat_multiplier.connect(_on_setted_beat_multiplier)
-	GameEvents.losed_hp.connect(_on_losed_hp)
-
-func _on_losed_hp(hp):
 	pass
 
 

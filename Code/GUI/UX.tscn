@@ -36,6 +36,10 @@ horizontal_alignment = 1
 
 [node name="HP" parent="." instance=ExtResource("2_m08i3")]
 layout_mode = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 6.0
+offset_bottom = 10.0
 
 [node name="Info" type="Label" parent="."]
 layout_mode = 1
