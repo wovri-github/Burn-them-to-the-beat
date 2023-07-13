@@ -78,14 +78,17 @@ text = "[x0]"
 
 [node name="LabelBeat" type="Label" parent="Factor"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -130.0
-offset_top = 41.0
-offset_right = 47.0
-offset_bottom = 79.0
-grow_horizontal = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = 74.5
+offset_right = 88.5
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
 tooltip_text = "(music) "
 text = "Music: [x0]"
 
@@ -102,18 +105,16 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 11.0
-offset_top = -45.0
-offset_right = 90.0
-offset_bottom = -14.0
+offset_left = 5.0
+offset_top = -47.0
+offset_right = 84.0
+offset_bottom = -4.0
 grow_vertical = 0
 text = "Leave"
 
 [node name="ScoreManager" parent="." instance=ExtResource("6_ga4g5")]
 layout_mode = 1
-offset_left = -4.0
-offset_top = -118.0
-offset_right = -4.0
-offset_bottom = -118.0
+offset_top = -61.0
+offset_bottom = -61.0
 
 [connection signal="pressed" from="LeaveB" to="." method="_on_leave_b_pressed"]

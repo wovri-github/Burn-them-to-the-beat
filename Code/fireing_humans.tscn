@@ -108,7 +108,7 @@ script = ExtResource("4_f6vun")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_56inx")
 animation = &"fire"
-frame_progress = 0.605961
+frame_progress = 0.816186
 offset = Vector2(0, -3)
 
 [node name="FlameTimer" type="Timer" parent="Fire"]
@@ -124,5 +124,9 @@ position = Vector2(7, 480)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeleteArea"]
 shape = SubResource("RectangleShape2D_spjfg")
 
+[node name="SecondSpawn" type="Timer" parent="."]
+wait_time = 0.571
+
 [connection signal="timeout" from="Fire/FlameTimer" to="Fire" method="_on_flame_timer_timeout"]
 [connection signal="area_exited" from="DeleteArea" to="." method="_on_delete_area_area_exited"]
+[connection signal="timeout" from="SecondSpawn" to="." method="_on_second_spawn_timeout"]

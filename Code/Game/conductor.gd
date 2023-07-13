@@ -20,7 +20,8 @@ var _prev_tick = 0
 
 
 func _ready():
-	play_with_beat_offset(2)
+	play_with_beat_offset(3)
+	#play_from_beat(50)
 
 func start_music():
 	time_begin = Time.get_ticks_usec()
@@ -38,12 +39,18 @@ func report_beat():
 	if _last_reported_beat < _song_position_in_beats:
 		_measure = (_last_reported_beat % _max_measures) +1
 		_last_reported_beat = _song_position_in_beats
-		tempo_logick(_song_position_in_beats)
+#		tempo_logick(_song_position_in_beats)
 		GameEvents.emit_signal("beat", _song_position_in_beats, _measure, _tempo)
 #		print("Beat: " + str(_song_position_in_beats)\
 #				 + " Measure: " + str(_measure)\
 #				 + " Time diff: " + str(Time.get_ticks_msec() - _prev_tick))
 		_prev_tick = Time.get_ticks_msec()
+
+func play_from_beat(beat):
+	play()
+	seek(beat * _sec_per_beat)
+	_beats_before_start = 3
+	#play_with_beat_offset(beat)
 
 func play_with_beat_offset(num):
 	_beats_before_start = num
@@ -51,23 +58,23 @@ func play_with_beat_offset(num):
 
 
 
-func tempo_logick(_beat):
-	_beat /= 2
-	if _beat == 8:
-		_tempo = (0.5)
-	if _beat == 64:
-		_tempo = (1)
-	if _beat == 88:
-		_tempo = (0.5)
-	if _beat == 128:
-		_tempo = (1)
-	if _beat == 160:
-		_tempo = (0.5)
-	if _beat == 192:
-		_tempo = (1)
-	if _beat == 224:
-		_tempo = (0.5)
-	GameEvents.emit_signal("music_beat", _beat)
+#func tempo_logick(_beat):
+#	_beat /= 2
+#	if _beat == 8:
+#		_tempo = (0.5)
+#	if _beat == 64:
+#		_tempo = (1)
+#	if _beat == 88:
+#		_tempo = (0.5)
+#	if _beat == 128:
+#		_tempo = (1)
+#	if _beat == 160:
+#		_tempo = (0.5)
+#	if _beat == 192:
+#		_tempo = (1)
+#	if _beat == 224:
+#		_tempo = (0.5)
+#	GameEvents.emit_signal("music_beat", _beat)
 
 
 
@@ -76,7 +83,8 @@ func _on_finished():
 	_song_position_in_beats = 1
 	_last_reported_beat = 1
 	_measure = 1
-	start_music()
+	print("YouWin!")
+	#start_music()
 
 
 func _on_offset_beat_timer_timeout():

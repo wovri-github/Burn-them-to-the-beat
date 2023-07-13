@@ -78,8 +78,9 @@ func _on_setted_beat_multiplier(multiplier):
 
 
 func _on_beat(_beat, measure, tempo):
+	pass
 	#if measure == 8:
-	fireing_humans.spawn_human()
+	#fireing_humans.spawn_human()
 
 
 func shake():
@@ -113,7 +114,6 @@ func lose_hp():
 	if hp <= 0:
 		hp = 0
 		print("GameOver")
-	print("Hp: " + str(hp))
 	GameEvents.emit_signal("hp_changed", hp)
 
 
