@@ -9,9 +9,9 @@ var _current_number_pool: Array
 var _correct_number: int
 var _current_left_number: int
 var _current_right_number: int
-var _factor_total: int:
+var _factor_sum: int:
 	set(val):
-		_factor_total = val
+		_factor_sum = val
 		GameEvents.emit_signal("factor_total_changed", val)
 var _disable_points = false
 var _beat_multiplier: int = 0
@@ -27,15 +27,6 @@ func _ready():
 	GameEvents.beat.connect(_on_beat)
 	GameEvents.setted_beat_multiplier.connect(_on_setted_beat_multiplier)
 
-func _input(event):
-	if event.is_action_pressed("ui_left") and _factor_total > 0:
-		shake()
-	if event.is_action_pressed("ui_right") and _factor_total > 0:
-#		if _current_right_number == _correct_number:
-#			correct_hit()
-#		else:
-#			decrease_hp()
-		shake()
 
 
 
@@ -43,8 +34,8 @@ func _process(delta):
 	var _factor_progress = _runtime_data.factor_progress
 	_factor_progress -= delta * 10
 	if _factor_progress < 0:
-		if _factor_total > 0:
-			_factor_total -= 1
+		if _factor_sum > 1:
+			_factor_sum -= 1
 			_factor_progress += 100
 		else:
 			_factor_progress = 0
@@ -53,14 +44,14 @@ func _process(delta):
 func factor_logic(is_correct):
 	var _factor_progress = _runtime_data.factor_progress
 	if is_correct:
-		_factor_progress += 12
+		_factor_progress += 15
 		if _factor_progress >= 100:
-			_factor_progress = 10
-			if _factor_total <= 10:
-				_factor_total += 1
-		else:
-			_factor_progress = 100
-	elif _factor_total > 0 or _factor_progress > PROGRESS_FACTOR_DEPRECIATION:
+			_factor_progress = 15
+			if _factor_sum <= 10:
+				_factor_sum += 1
+#		else:
+#			_factor_progress = 100
+	elif _factor_sum > 1 or _factor_progress > PROGRESS_FACTOR_DEPRECIATION:
 		_factor_progress -= PROGRESS_FACTOR_DEPRECIATION
 	_runtime_data.factor_progress = _factor_progress
 
@@ -76,17 +67,21 @@ func _on_setted_beat_multiplier(multiplier):
 		_beat_multiplier = 10
 
 
+func story(_beat):
+	if _beat == 18:
+		$HitGoblinManager.left_on = true
+		$MusicBars.show_left_group()
+	if _beat == 30:
+		$HitGoblinManager/GoblinR.show()
+	if _beat == 35:
+		$HitGoblinManager.right_on = true
+		$MusicBars.show_right_group()
+		
+
 
 func _on_beat(_beat, measure, tempo):
-	pass
-	#if measure == 8:
-	#fireing_humans.spawn_human()
+	story(_beat)
 
-
-func shake():
-	self.set_global_position(Vector2(0,7))
-	await get_tree().create_timer(0.1).timeout
-	self.set_global_position(Vector2(0,0))
 
 
 func _on_new_pool_picked(new_pool):
@@ -119,7 +114,10 @@ func lose_hp():
 
 func _on_fireing_humans_flamed(_is_human_burned):
 	points_logic(_is_human_burned)
-	#$MusicBars.color_bars(_is_human_burned)
 
 func _on_fireing_humans_human_escaped():
 	lose_hp()
+
+func _on_hit_made(is_correct, is_left_side):
+	factor_logic(is_correct)
+	$MusicBars.color_bars(is_correct, is_left_side)

@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_dl6un")
-factor_progress = 90.0
+factor_progress = 0.0

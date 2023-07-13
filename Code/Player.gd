@@ -14,11 +14,11 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		hop()
 	if event.is_action_pressed("ui_left") \
-			and _factor_total > 0 \
+	#		and _factor_total > 0 \
 			and _is_attacking_left:
 		attack()
 	if event.is_action_pressed("ui_right") \
-			and _factor_total > 0 \
+	#		and _factor_total > 0 \
 			and _is_attacking_right:
 		attack()
 

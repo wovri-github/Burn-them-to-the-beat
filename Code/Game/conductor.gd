@@ -21,7 +21,7 @@ var _prev_tick = 0
 
 func _ready():
 	play_with_beat_offset(3)
-	#play_from_beat(50)
+	#play_from_beat(20)
 
 func start_music():
 	time_begin = Time.get_ticks_usec()

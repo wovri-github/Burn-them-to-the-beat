@@ -18,10 +18,12 @@ func spawn_human():
 	$HumanSpawn.add_child(human_inst)
 
 func spawn_logick(_beat):
+	if _beat == 1:
+		active_measures = [4]
 	if _beat == 8:
-		active_measures = [1]
-	if _beat == 16:
 		active_measures = [1,2]
+	if _beat == 16:
+		active_measures = []
 	if _beat == 24:
 		active_measures = [1,3,5,7]
 	if _beat == 32:
