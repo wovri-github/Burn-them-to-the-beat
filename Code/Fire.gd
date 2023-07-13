@@ -1,16 +1,13 @@
 @tool
-extends AnimatedSprite2D
+extends Area2D
 
-@export var flame_big_scale: float = 3:
-	set(new_scale):
-		flame_big_scale = new_scale
-		self.set_scale(Vector2(flame_big_scale, flame_big_scale))
+@export var flame_big_scale: float = 3
 
 
 
 func _ready():
-	self.set_scale(Vector2.ONE)
-	self.play("fire")
+	$Sprite.set_scale(Vector2.ONE)
+	$Sprite.play("fire")
 
 
 func _input(event):
@@ -20,18 +17,19 @@ func _input(event):
 
 
 func big_flame():
-	self.set_scale(Vector2(flame_big_scale, flame_big_scale))
+	$Sprite.set_scale(Vector2(flame_big_scale, flame_big_scale))
 	$FlameTimer.start()
 
 
 func burn_human():
-	var humans_on_fire = $Area2D.get_overlapping_areas()
+	var humans_on_fire = self.get_overlapping_areas()
+	var _is_human_burned = false
 	if humans_on_fire:
+		_is_human_burned = true
 		for human in humans_on_fire:
 			human.die()
-	else:
-		print("No humans!")
+	get_parent().emit_signal("flamed", _is_human_burned)
 
 
 func _on_flame_timer_timeout():
-	self.set_scale(Vector2.ONE)
+	$Sprite.set_scale(Vector2.ONE)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjq88vs4wuxwq"]
+[gd_scene load_steps=16 format=3 uid="uid://bjq88vs4wuxwq"]
 
 [ext_resource type="Script" path="res://Code/fireing_humans.gd" id="1_xkntq"]
 [ext_resource type="Texture2D" uid="uid://e52cetmh23rl" path="res://Assets/bluefire.png" id="2_qclpc"]
@@ -71,11 +71,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"fire",
-"speed": 16.0
+"speed": 11.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1iue"]
-size = Vector2(7.33333, 18.6667)
+size = Vector2(20, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spjfg"]
+size = Vector2(20, 76)
 
 [node name="FireingHumans" type="Node2D"]
 script = ExtResource("1_xkntq")
@@ -94,26 +97,32 @@ offset_bottom = 500.0
 color = Color(0.160784, 0.152941, 0.14902, 1)
 
 [node name="HumanSpawn" type="Node2D" parent="."]
-position = Vector2(549, 495)
+position = Vector2(539, 492)
 
-[node name="Fire" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
+[node name="Fire" type="Area2D" parent="."]
 position = Vector2(255, 492)
-scale = Vector2(3, 3)
+monitorable = false
+script = ExtResource("4_f6vun")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Fire"]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_56inx")
 animation = &"fire"
-frame_progress = 0.301707
+frame_progress = 0.0297797
 offset = Vector2(0, -3)
-script = ExtResource("4_f6vun")
 
 [node name="FlameTimer" type="Timer" parent="Fire"]
 wait_time = 0.2
 
-[node name="Area2D" type="Area2D" parent="Fire"]
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fire/Area2D"]
-position = Vector2(0, -1.33334)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fire"]
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_b1iue")
 
+[node name="DeleteArea" type="Area2D" parent="."]
+position = Vector2(7, 480)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeleteArea"]
+shape = SubResource("RectangleShape2D_spjfg")
+
 [connection signal="timeout" from="Fire/FlameTimer" to="Fire" method="_on_flame_timer_timeout"]
+[connection signal="area_exited" from="DeleteArea" to="." method="_on_delete_area_area_exited"]

@@ -1,25 +1,26 @@
 extends AudioStreamPlayer
 
 
-@export var _offset_speed = 2
-@export var _max_measures: int = self.stream.get_bar_beats() * _offset_speed
-@export var _bpm: int = self.stream.get_bpm() * _offset_speed
+@export var _max_measures: int = self.stream.get_bar_beats()
+@export var _bpm: int = self.stream.get_bpm()
 
 var _sec_per_beat = 60.0 / _bpm
-var _song_position_in_beats: int= 1
-var _last_reported_beat = _offset_speed
-var _measure = _offset_speed
+var _song_position_in_beats: int= 0
+var _last_reported_beat = 0
+var _measure
 var _tempo := 0
 var _beats_before_start = 0
 var time_begin
 var time_delay
+
+var _prev_tick = 0
 
 @onready var offset_beat_timer = $OffsetBeatTimer
 
 
 
 func _ready():
-	play_with_beat_offset(17)
+	play_with_beat_offset(2)
 
 func start_music():
 	time_begin = Time.get_ticks_usec()
@@ -28,10 +29,9 @@ func start_music():
 
 func _process(delta):
 	if self.is_playing():
-		var _song_position = (Time.get_ticks_usec() - time_begin) / 1000000.0
-		_song_position -= time_delay
-		_song_position = max(0, _song_position)
-		_song_position_in_beats = int(_song_position / _sec_per_beat) + _offset_speed
+		var song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
+		song_position -= AudioServer.get_output_latency()
+		_song_position_in_beats = int(floor(song_position / _sec_per_beat)) + _beats_before_start
 		report_beat()
 
 func report_beat():
@@ -40,7 +40,10 @@ func report_beat():
 		_last_reported_beat = _song_position_in_beats
 		tempo_logick(_song_position_in_beats)
 		GameEvents.emit_signal("beat", _song_position_in_beats, _measure, _tempo)
-		print("Beat: " + str(_song_position_in_beats) + " Measure: " + str(_measure))
+#		print("Beat: " + str(_song_position_in_beats)\
+#				 + " Measure: " + str(_measure)\
+#				 + " Time diff: " + str(Time.get_ticks_msec() - _prev_tick))
+		_prev_tick = Time.get_ticks_msec()
 
 func play_with_beat_offset(num):
 	_beats_before_start = num
@@ -71,17 +74,18 @@ func tempo_logick(_beat):
 func _on_finished():
 	_tempo = 0
 	_song_position_in_beats = 1
-	_last_reported_beat = _offset_speed
-	_measure = _offset_speed
+	_last_reported_beat = 1
+	_measure = 1
 	start_music()
 
 
 func _on_offset_beat_timer_timeout():
-	report_beat()
-	if _song_position_in_beats == _beats_before_start -1:
-		offset_beat_timer.stop()
-		_song_position_in_beats = 1
-		_last_reported_beat = _offset_speed
-		start_music()
-		return
 	_song_position_in_beats += 1
+	if _song_position_in_beats == _beats_before_start-1:
+		offset_beat_timer.start(_sec_per_beat - (AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()))
+		
+	if _song_position_in_beats == _beats_before_start:
+		play()
+		offset_beat_timer.stop()
+		return
+	report_beat()

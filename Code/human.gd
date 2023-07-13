@@ -1,13 +1,16 @@
 extends Area2D
 
+@export var random_spawn_range = 10
 var _speed := 0
 
 func init(speed):
+	$Sprite.frame = randi_range(0, 79)
+	position.y = randi_range(-random_spawn_range, random_spawn_range)
 	_speed = speed
 
-func _process(delta):
+func _physics_process(delta):
 	var move = _speed * delta
-	self.position -= Vector2(move, 0)
+	self.position.x -= move
 
 func die():
 	queue_free()

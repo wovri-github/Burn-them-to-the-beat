@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://h80ckumhkhx1"]
+[gd_scene load_steps=14 format=3 uid="uid://h80ckumhkhx1"]
 
 [ext_resource type="Script" path="res://Code/Game/Game.gd" id="1_y51tq"]
 [ext_resource type="Script" path="res://Code/Game/RandomPool.gd" id="2_ac1w3"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://482qvsvj2xx2" path="res://Code/DancingGoblin.tscn" id="6_jjuxq"]
 [ext_resource type="Script" path="res://Code/Game/HitGoblinManager.gd" id="9_85fpq"]
 [ext_resource type="PackedScene" uid="uid://ctaap8kjywvu1" path="res://Code/Game/conductor.tscn" id="12_exmtr"]
-[ext_resource type="Script" path="res://Code/Game/tempo_controller.gd" id="13_pxhu1"]
 [ext_resource type="PackedScene" uid="uid://bjq88vs4wuxwq" path="res://Code/fireing_humans.tscn" id="14_cyj3i"]
 
 [node name="Game" type="Node2D"]
@@ -228,10 +227,10 @@ _is_attacking_left = true
 
 [node name="Conductor" parent="." instance=ExtResource("12_exmtr")]
 
-[node name="TempoController" type="Node" parent="."]
-script = ExtResource("13_pxhu1")
-
 [node name="FireingHumans" parent="." instance=ExtResource("14_cyj3i")]
+
+[connection signal="flamed" from="FireingHumans" to="." method="_on_fireing_humans_flamed"]
+[connection signal="human_escaped" from="FireingHumans" to="." method="_on_fireing_humans_human_escaped"]
 
 [editable path="DanceManager/DancingGoblins/DancingGoblin2"]
 [editable path="DanceManager/DancingGoblins/DancingGoblin3"]
