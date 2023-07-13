@@ -7,7 +7,12 @@ signal factor_total_changed(value: int)
 
 signal action_made(action)
 
+
 signal music_beat(beat: int)
-signal beat(_song_position_in_beats: int, _measure: int, tempo: int)
 
 signal setted_beat_multiplier(beat_multiplier: int)
+
+
+signal beat(_song_position_in_beats: int, _measure: int, tempo: int)
+signal scored(score)
+signal losed_hp(hp)

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://u4mxkfjd5fnq"]
+[gd_scene load_steps=8 format=3 uid="uid://u4mxkfjd5fnq"]
 
+[ext_resource type="Theme" uid="uid://dfuneucxdd2t" path="res://Assets/DefaultTheme.tres" id="1_kguyx"]
 [ext_resource type="Script" path="res://Code/GUI/UX.gd" id="1_xxrsr"]
 [ext_resource type="PackedScene" uid="uid://cyarsbbwewu6f" path="res://Code/GUI/HPset.tscn" id="2_m08i3"]
 [ext_resource type="Script" path="res://Code/GUI/ProgressBar.gd" id="3_def61"]
 [ext_resource type="Resource" uid="uid://c163liyttkno0" path="res://Code/runtime_data.tres" id="4_73qpb"]
+[ext_resource type="PackedScene" uid="uid://b6aotl7snp7t" path="res://Code/GUI/Score/score_manager.tscn" id="6_ga4g5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jd8oq"]
 font_size = 32
@@ -15,9 +17,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_kguyx")
 script = ExtResource("1_xxrsr")
 
 [node name="Counter" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -28,30 +32,6 @@ offset_right = 15.0
 offset_bottom = 124.0
 grow_horizontal = 2
 text = "00"
-horizontal_alignment = 1
-
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 164.0
-offset_top = 70.0
-offset_right = 306.0
-offset_bottom = 98.0
-
-[node name="Label" type="Label" parent="Panel"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Score: "
-
-[node name="ScoreValue" type="Label" parent="Panel"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 52.0
-offset_top = 1.0
-offset_right = 142.0
-offset_bottom = 27.0
-text = "XXX"
 horizontal_alignment = 1
 
 [node name="HP" parent="." instance=ExtResource("2_m08i3")]
@@ -84,36 +64,26 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_top = -1.0
-offset_right = 134.0
-offset_bottom = 25.0
+offset_left = -43.0
+offset_top = 1.0
+offset_right = 138.0
+offset_bottom = 39.0
 grow_horizontal = 0
-text = "(rythm) [x0]"
+tooltip_text = "(rythm) "
+text = "[x0]"
 
 [node name="LabelBeat" type="Label" parent="Factor"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_top = 24.0
-offset_right = 137.0
-offset_bottom = 50.0
+offset_left = -130.0
+offset_top = 41.0
+offset_right = 47.0
+offset_bottom = 79.0
 grow_horizontal = 0
-text = "(music) [x0]"
-
-[node name="LabelTotal" type="Label" parent="Factor"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -69.0
-offset_top = 64.0
-offset_right = 108.0
-offset_bottom = 90.0
-grow_horizontal = 0
-text = "(total) [x0]"
+tooltip_text = "(music) "
+text = "Music: [x0]"
 
 [node name="ProgressBar" type="ProgressBar" parent="Factor"]
 layout_mode = 1
@@ -134,5 +104,12 @@ offset_right = 90.0
 offset_bottom = -14.0
 grow_vertical = 0
 text = "Leave"
+
+[node name="ScoreManager" parent="." instance=ExtResource("6_ga4g5")]
+layout_mode = 1
+offset_left = -4.0
+offset_top = -118.0
+offset_right = -4.0
+offset_bottom = -118.0
 
 [connection signal="pressed" from="LeaveB" to="." method="_on_leave_b_pressed"]

@@ -7,11 +7,10 @@ extends Control
 ]
 @onready var counter = $Counter
 @onready var HP = $HP
-@onready var ScoreValue = %ScoreValue
 @onready var FactorText = $Factor/Label
 @onready var FactorBeat = $Factor/LabelBeat
-@onready var FactorTotal = $Factor/LabelTotal
 @onready var FactorProg = $Factor/ProgressBar
+@onready var score_manager = $ScoreManager
 var sequence_counter = 0
 var _factor_total: int
 var _beat_multiplier: int
@@ -20,11 +19,16 @@ var was_info = false
 
 
 func _ready():
-	change_sequence()
-	GameEvents.music_beat.connect(_on_music_bit_timeout)
-	GameEvents.action_made.connect(_on_action_made)
-	GameEvents.factor_total_changed.connect(_on_factor_total_changed)
-	GameEvents.setted_beat_multiplier.connect(_on_setted_beat_multiplier)
+#	change_sequence()
+#	GameEvents.music_beat.connect(_on_music_bit_timeout)
+#	GameEvents.factor_total_changed.connect(_on_factor_total_changed)
+#	GameEvents.setted_beat_multiplier.connect(_on_setted_beat_multiplier)
+	GameEvents.losed_hp.connect(_on_losed_hp)
+
+func _on_losed_hp(hp):
+	pass
+
+
 
 func _on_setted_beat_multiplier(multiplier):
 	if multiplier == 0:
@@ -33,23 +37,13 @@ func _on_setted_beat_multiplier(multiplier):
 		_beat_multiplier = 1
 	elif multiplier == 2:
 		_beat_multiplier = 10
-	total_calculus()
 
 func _on_music_bit_timeout(beat):
-	total_calculus()
+	pass
 #	if beat % 8:
 #		_on_beated_8()
 
 
-func _on_action_made(action: Action):
-	if action.type == Action.TYPES.HP:
-		HP.decrease_hp() 
-	if action.type == Action.TYPES.POINT:
-		ScoreValue.text = str(action.value)
-
-
-func total_calculus():
-	FactorTotal.set_text("(total) [x" + str(_beat_multiplier * _factor_total) + "]")
 
 func _on_beated_8():
 	change_sequence()

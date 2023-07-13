@@ -1,0 +1,97 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6aotl7snp7t"]
+
+[ext_resource type="Theme" uid="uid://dfuneucxdd2t" path="res://Assets/DefaultTheme.tres" id="1_vdkvk"]
+[ext_resource type="Script" path="res://Code/GUI/Score/score_manager.gd" id="2_qcyo7"]
+
+[node name="ScoreManager" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vdkvk")
+script = ExtResource("2_qcyo7")
+
+[node name="FloatingContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -255.0
+offset_top = -256.0
+offset_right = -255.0
+offset_bottom = -256.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -19.0
+offset_right = 75.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Score" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="FloatingScoreSpawn" type="Control" parent="HBoxContainer/Score"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Score"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Score/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer/Score/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_vdkvk")
+text = "Score:"
+vertical_alignment = 1
+
+[node name="ScoreValue" type="Label" parent="HBoxContainer/Score/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/Score/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="LabelTotal" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+tooltip_text = "(total) Calculated on base: Rythm * Music factors"
+mouse_filter = 1
+theme_override_font_sizes/font_size = 20
+text = "[x0]"
+vertical_alignment = 2
+
+[node name="ColorTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="TEST" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -186.0
+offset_top = 65.0
+offset_right = -21.0
+offset_bottom = 118.0
+
+[connection signal="timeout" from="ColorTimer" to="." method="_on_color_timer_timeout"]
+[connection signal="pressed" from="TEST" to="." method="_on_test_pressed"]

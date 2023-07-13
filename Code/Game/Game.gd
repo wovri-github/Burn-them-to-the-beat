@@ -106,8 +106,7 @@ func points_logic(_is_human_burned):
 		score -= 1
 		if score <= 0:
 			score = 0
-	print("Points: " + str(score))
-	#GameEvents.emit_signal("action_made", action)
+	GameEvents.emit_signal("scored", score)
 
 func lose_hp():
 	hp -= 1
@@ -115,6 +114,7 @@ func lose_hp():
 		hp = 0
 		print("GameOver")
 	print("Hp: " + str(hp))
+	GameEvents.emit_signal("losed_hp", hp)
 
 
 func _on_fireing_humans_flamed(_is_human_burned):

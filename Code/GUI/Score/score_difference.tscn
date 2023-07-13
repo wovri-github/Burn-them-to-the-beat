@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://db5f3um1dj0li"]
+
+[ext_resource type="Script" path="res://Code/GUI/Score/score_difference.gd" id="1_jc2oq"]
+
+[node name="ScoreDifference" type="Label"]
+offset_left = -164.0
+offset_bottom = 29.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 18
+text = "(+12)"
+horizontal_alignment = 2
+script = ExtResource("1_jc2oq")
+
+[node name="LifeTime" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]
