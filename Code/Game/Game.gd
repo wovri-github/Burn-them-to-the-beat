@@ -9,10 +9,10 @@ var _current_number_pool: Array
 var _correct_number: int
 var _current_left_number: int
 var _current_right_number: int
-var _factor_sum: int:
+var _factor_sum: int = 1:
 	set(val):
 		_factor_sum = val
-		GameEvents.emit_signal("factor_total_changed", val)
+		GameEvents.emit_signal("new_factor_sum", val)
 var _disable_points = false
 var _beat_multiplier: int = 0
 var score = 0
@@ -22,6 +22,7 @@ var hp = Defaluts.STARTING_HP
 
 
 func _ready():
+	GameEvents.emit_signal("new_factor_sum", _factor_sum)
 	GameEvents.new_boxes_number_picked.connect(_on_new_boxes_number_picked)
 	GameEvents.new_pool_picked.connect(_on_new_pool_picked)
 	GameEvents.beat.connect(_on_beat)
@@ -44,7 +45,7 @@ func _process(delta):
 func factor_logic(is_correct):
 	var _factor_progress = _runtime_data.factor_progress
 	if is_correct:
-		_factor_progress += 15
+		_factor_progress += 20
 		if _factor_progress >= 100:
 			_factor_progress = 15
 			if _factor_sum <= 10:

@@ -69,28 +69,12 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -43.0
-offset_top = 1.0
+offset_top = 9.0
 offset_right = 138.0
-offset_bottom = 39.0
+offset_bottom = 47.0
 grow_horizontal = 0
 tooltip_text = "(rythm) "
 text = "[x0]"
-
-[node name="LabelBeat" type="Label" parent="Factor"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -88.5
-offset_top = 74.5
-offset_right = 88.5
-offset_bottom = 112.5
-grow_horizontal = 2
-grow_vertical = 2
-tooltip_text = "(music) "
-text = "Music: [x0]"
 
 [node name="ProgressBar" type="ProgressBar" parent="Factor"]
 layout_mode = 1

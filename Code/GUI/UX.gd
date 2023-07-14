@@ -8,7 +8,6 @@ extends Control
 @onready var counter = $Counter
 @onready var HP = $HP
 @onready var FactorText = $Factor/Label
-@onready var FactorBeat = $Factor/LabelBeat
 @onready var FactorProg = $Factor/ProgressBar
 @onready var score_manager = $ScoreManager
 var sequence_counter = 0
@@ -21,7 +20,7 @@ var was_info = false
 func _ready():
 #	change_sequence()
 #	GameEvents.music_beat.connect(_on_music_bit_timeout)
-#	GameEvents.factor_total_changed.connect(_on_factor_total_changed)
+	GameEvents.new_factor_sum.connect(_on_new_factor_sum)
 #	GameEvents.setted_beat_multiplier.connect(_on_setted_beat_multiplier)
 	pass
 
@@ -40,11 +39,6 @@ func _on_music_bit_timeout(beat):
 #	if beat % 8:
 #		_on_beated_8()
 
-
-
-func _on_beated_8():
-	change_sequence()
-	FactorBeat.set_text("(music) [x " + str(_beat_multiplier) + "]")
 	
 
 func change_sequence():
@@ -55,17 +49,16 @@ func change_sequence():
 	sequence_counter += 1
 
 
-func _on_factor_total_changed(value):
-	_factor_total = value
+func _on_new_factor_sum(value):
 	if value == 11:
-		FactorText.set_text("(rythm) [x11] (MAX)")
+		FactorText.set_text("[x11] (MAX)")
 	else:
-		FactorText.set_text("(rythm) [x" + str(value)+"]")
-	if not was_info and value == 1: 
-		was_info = true
-		$Info.text = "Click for points!"
-		await get_tree().create_timer(4.5).timeout
-		$Info.text = ""
+		FactorText.set_text("[x" + str(value)+"]")
+#	if not was_info and value == 1: 
+#		was_info = true
+#		$Info.text = "Click for points!"
+#		await get_tree().create_timer(4.5).timeout
+#		$Info.text = ""
 	
 
 func _on_leave_b_pressed():

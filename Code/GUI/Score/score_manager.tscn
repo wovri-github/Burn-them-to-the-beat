@@ -74,6 +74,7 @@ layout_mode = 2
 
 [node name="LabelTotal" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 8
 tooltip_text = "(total) Calculated on base: Rythm * Music factors"
