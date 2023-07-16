@@ -1,0 +1,103 @@
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://bw1isi430gsb0"]
+
+[ext_resource type="FontFile" uid="uid://dk1k8buhdg0iv" path="res://Assets/font/bitfont.ttf" id="1_ax0ji"]
+[ext_resource type="Texture2D" uid="uid://bp4cke3x6xvv" path="res://Assets/UI/ui-large-buttons-horizontal.png" id="2_sxlxs"]
+[ext_resource type="Texture2D" uid="uid://bo1673o5y64k4" path="res://Assets/UI/ui-frames.png" id="3_lu68i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j16u5"]
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(0, 64, 48, 16)
+modulate_color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fnfa"]
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(0, 64, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_opckp"]
+content_margin_top = 1.0
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(48, 64, 48, 16)
+modulate_color = Color(0.54902, 0.54902, 0.54902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hhn0k"]
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(0, 48, 48, 16)
+modulate_color = Color(0.784314, 0.784314, 0.784314, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kjkas"]
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(0, 48, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8fq5"]
+content_margin_top = 10.0
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(48, 48, 48, 16)
+modulate_color = Color(0.717647, 0.717647, 0.717647, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4fp51"]
+content_margin_top = 10.0
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(48, 16, 48, 16)
+modulate_color = Color(0.392157, 0.392157, 0.392157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3wpu4"]
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(0, 16, 48, 16)
+modulate_color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jushb"]
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(0, 16, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mor13"]
+content_margin_top = 10.0
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(48, 16, 48, 16)
+modulate_color = Color(0.717647, 0.717647, 0.717647, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6vbhe"]
+texture = ExtResource("3_lu68i")
+region_rect = Rect2(32, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0y4y2"]
+content_margin_top = 10.0
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(48, 0, 48, 16)
+modulate_color = Color(0.392157, 0.392157, 0.392157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_txbb6"]
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(0, 0, 48, 16)
+modulate_color = Color(0.780392, 0.780392, 0.780392, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xn70b"]
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(0, 0, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_adh3b"]
+content_margin_top = 10.0
+texture = ExtResource("2_sxlxs")
+region_rect = Rect2(48, 0, 48, 16)
+modulate_color = Color(0.709804, 0.709804, 0.709804, 1)
+
+[resource]
+BlackButton/base_type = &"Button"
+BlackButton/styles/hover = SubResource("StyleBoxTexture_j16u5")
+BlackButton/styles/normal = SubResource("StyleBoxTexture_6fnfa")
+BlackButton/styles/pressed = SubResource("StyleBoxTexture_opckp")
+GreenButton/base_type = &"Button"
+GreenButton/styles/hover = SubResource("StyleBoxTexture_hhn0k")
+GreenButton/styles/normal = SubResource("StyleBoxTexture_kjkas")
+GreenButton/styles/pressed = SubResource("StyleBoxTexture_g8fq5")
+Label/fonts/font = ExtResource("1_ax0ji")
+OrangeButton/base_type = &"Button"
+OrangeButton/styles/disabled = SubResource("StyleBoxTexture_4fp51")
+OrangeButton/styles/hover = SubResource("StyleBoxTexture_3wpu4")
+OrangeButton/styles/normal = SubResource("StyleBoxTexture_jushb")
+OrangeButton/styles/pressed = SubResource("StyleBoxTexture_mor13")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_6vbhe")
+RedButton/base_type = &"Button"
+RedButton/styles/disabled = SubResource("StyleBoxTexture_0y4y2")
+RedButton/styles/hover = SubResource("StyleBoxTexture_txbb6")
+RedButton/styles/normal = SubResource("StyleBoxTexture_xn70b")
+RedButton/styles/pressed = SubResource("StyleBoxTexture_adh3b")

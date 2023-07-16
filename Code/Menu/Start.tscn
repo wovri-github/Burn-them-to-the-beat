@@ -1,31 +1,85 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxm184gb3l4oq"]
+[gd_scene load_steps=6 format=3 uid="uid://bxm184gb3l4oq"]
 
+[ext_resource type="Theme" uid="uid://bw1isi430gsb0" path="res://Code/Menu/MenuTheme.tres" id="1_lbl2g"]
 [ext_resource type="Script" path="res://Code/Menu/Start.gd" id="1_ohbfg"]
+[ext_resource type="Texture2D" uid="uid://bo1673o5y64k4" path="res://Assets/UI/ui-frames.png" id="3_sabkh"]
+[ext_resource type="Script" path="res://Code/Menu/StartB.gd" id="5_etcaa"]
+[ext_resource type="PackedScene" uid="uid://cvlauoeilmrst" path="res://Code/Menu/credits.tscn" id="5_guibt"]
 
 [node name="Start" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_lbl2g")
 script = ExtResource("1_ohbfg")
 
-[node name="StartB" type="Button" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+offset_left = 58.0
+offset_top = 61.0
+offset_right = 137.0
+offset_bottom = 140.0
+scale = Vector2(5, 5)
+texture = ExtResource("3_sabkh")
+region_rect = Rect2(32, 0, 32, 32)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 190.0
-offset_top = 175.0
-offset_right = 334.0
-offset_bottom = 218.0
+offset_left = 87.0
+offset_top = 95.0
+offset_right = 259.0
+offset_bottom = 114.0
+scale = Vector2(2, 2)
+text = "Burn them to the beat"
+
+[node name="PanelContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 180.0
+offset_right = 348.0
+offset_bottom = 402.0
+
+[node name="StartB" type="Button" parent="PanelContainer2"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_type_variation = &"RedButton"
 text = "Start"
+script = ExtResource("5_etcaa")
 
-[node name="QuitB" type="Button" parent="."]
-layout_mode = 0
-offset_left = 188.0
-offset_top = 266.0
-offset_right = 332.0
-offset_bottom = 309.0
-text = "Quit"
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
 
-[connection signal="pressed" from="StartB" to="." method="_on_start_b_pressed"]
-[connection signal="pressed" from="QuitB" to="." method="_on_quit_b_pressed"]
+[node name="CreditsB" type="Button" parent="PanelContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_type_variation = &"RedButton"
+text = "Credits "
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer2"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="QuitB" type="Button" parent="PanelContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_type_variation = &"RedButton"
+text = "Exit "
+
+[node name="Credits" parent="." instance=ExtResource("5_guibt")]
+visible = false
+layout_mode = 1
+
+[connection signal="mouse_entered" from="PanelContainer2/StartB" to="PanelContainer2/StartB" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer2/StartB" to="PanelContainer2/StartB" method="_on_mouse_exited"]
+[connection signal="pressed" from="PanelContainer2/StartB" to="." method="_on_start_b_pressed"]
+[connection signal="pressed" from="PanelContainer2/CreditsB" to="." method="_on_credits_b_pressed"]
+[connection signal="pressed" from="PanelContainer2/QuitB" to="." method="_on_quit_b_pressed"]

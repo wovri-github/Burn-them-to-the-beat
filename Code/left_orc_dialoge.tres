@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://du3ifuemtq5do"]
+
+[ext_resource type="Script" path="res://Code/dialogue.gd" id="1_l8hw4"]
+
+[resource]
+script = ExtResource("1_l8hw4")
+dialog_slides = PackedStringArray("Use \"space\" for flame", "More is coming!", "I need to call out my boys. They have to see it.", "Use \"left\" with the rythm to increase score multiplier.")
+dialog_starting_beat = PackedInt32Array(2, 7, 10, 14)
+dialog_end_beat = Array[int]([7, 10, 14, 200])

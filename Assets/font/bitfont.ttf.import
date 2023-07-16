@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://51ccljv5c06v"
-path="res://.godot/imported/Help Alex.otf-26c03156ff5803c949f47925f6157e2a.fontdata"
+uid="uid://dk1k8buhdg0iv"
+path="res://.godot/imported/bitfont.ttf-5c14ca2f4ba8986aa8f73ee629da5e34.fontdata"
 
 [deps]
 
-source_file="res://Assets/font_alex/Help Alex.otf"
-dest_files=["res://.godot/imported/Help Alex.otf-26c03156ff5803c949f47925f6157e2a.fontdata"]
+source_file="res://Assets/font/bitfont.ttf"
+dest_files=["res://.godot/imported/bitfont.ttf-5c14ca2f4ba8986aa8f73ee629da5e34.fontdata"]
 
 [params]
 

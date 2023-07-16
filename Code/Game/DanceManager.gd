@@ -8,7 +8,7 @@ var _prev_factor = 4
 
 
 func _ready():
-	GameEvents.factor_total_changed.connect(_on_factor_value_change)
+	GameEvents.new_factor_sum.connect(_on_factor_value_change)
 
 
 func _on_factor_value_change(factor):

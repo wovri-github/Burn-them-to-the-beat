@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp8qpdywgve3v"
-path="res://.godot/imported/Help Alex.jpg-044fc327125859b1438cd020dcb44979.ctex"
+uid="uid://bp4cke3x6xvv"
+path="res://.godot/imported/ui-large-buttons-horizontal.png-c0c1d28b5005f9efb8a53a8fc6655cf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/font_alex/Help Alex.jpg"
-dest_files=["res://.godot/imported/Help Alex.jpg-044fc327125859b1438cd020dcb44979.ctex"]
+source_file="res://Assets/UI/ui-large-buttons-horizontal.png"
+dest_files=["res://.godot/imported/ui-large-buttons-horizontal.png-c0c1d28b5005f9efb8a53a8fc6655cf3.ctex"]
 
 [params]
 

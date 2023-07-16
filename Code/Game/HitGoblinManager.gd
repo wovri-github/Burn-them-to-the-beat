@@ -10,7 +10,7 @@ var right_on = false
 
 
 func _ready():
-	GameEvents.factor_total_changed.connect(_on_factor_value_change)
+	GameEvents.new_factor_sum.connect(_on_new_factor_sum)
 	GameEvents.beat.connect(_on_beat)
 
 
@@ -46,19 +46,18 @@ func check_timer_right():
 		self.emit_signal("hit_made", true, false)
 
 func shake():
-	self.set_global_position(Vector2(0,7))
+	get_parent().set_global_position(Vector2(0,7))
 	await get_tree().create_timer(0.1).timeout
-	self.set_global_position(Vector2(0,0))
+	get_parent().set_global_position(Vector2(0,0))
 
 
-func _on_factor_value_change(factor):
-	if factor == 2:
-		GoblinsR[0].show()
-		GoblinsR[1].hide()
-		return
+func _on_new_factor_sum(factor):
+#	if factor == 2:
+#		GoblinsR[1].hide()
+#		return
 	if factor == 3:
 		GoblinsR[1].show()
-		GoblinsL[1].hide()
+#		GoblinsL[1].hide()
 		return
 	if factor == 4:
 		GoblinsL[1].show()

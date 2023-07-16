@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvlauoeilmrst"]
+
+[ext_resource type="Texture2D" uid="uid://bo1673o5y64k4" path="res://Assets/UI/ui-frames.png" id="1_2vkyd"]
+[ext_resource type="Script" path="res://Code/Menu/credits.gd" id="1_4oqkq"]
+[ext_resource type="Theme" uid="uid://bw1isi430gsb0" path="res://Code/Menu/MenuTheme.tres" id="2_po3ir"]
+
+[node name="Credits" type="Control"]
+texture_filter = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4oqkq")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 10.0
+offset_right = 116.0
+offset_bottom = 109.0
+scale = Vector2(5, 5)
+texture = ExtResource("1_2vkyd")
+region_rect = Rect2(32, 0, 32, 32)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 30.0
+offset_right = -27.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+bbcode_enabled = true
+text = "[center] [b]Credits:[/b]
+game design, programming - Wovri
+
+All assets from internet:
+Music - Biogas by Defrini
+https://freemusicarchive.org/music/defrini/single/biogas/
+
+2D art from OpenGameArt:
+Glacialan - Humans
+Orcs - Merry Dream Games
+Fire - Spring Spring
+
+Font - by Khurasan 
+https://www.dafont.com/help-alex.font?l[]=10&l[]=1
+Bit font - Craftron Gaming
+
+Dialouge Boxes - Phani29
+
+buttons - Ariel Oliveira
+https://oarielg.itch.io/2d-simple-ui-pack 
+
+Game was insiperd by smash Hit from  https://tuile.itch.io/smash-hit
+[/center]"
+selection_enabled = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 454.0
+offset_right = 487.0
+offset_bottom = 500.0
+theme = ExtResource("2_po3ir")
+text = "Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -8,3 +8,7 @@ func _on_start_b_pressed():
 
 func _on_quit_b_pressed():
 	get_tree().quit()
+
+
+func _on_credits_b_pressed():
+	$Credits.show()

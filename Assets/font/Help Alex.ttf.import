@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cji7f12plvkw7"
-path="res://.godot/imported/Help Alex.ttf-90e64c5e86494f250c9275e93a78b8d2.fontdata"
+path="res://.godot/imported/Help Alex.ttf-34ca1d0809fe81fe888bd82463912c13.fontdata"
 
 [deps]
 
-source_file="res://Assets/font_alex/Help Alex.ttf"
-dest_files=["res://.godot/imported/Help Alex.ttf-90e64c5e86494f250c9275e93a78b8d2.fontdata"]
+source_file="res://Assets/font/Help Alex.ttf"
+dest_files=["res://.godot/imported/Help Alex.ttf-34ca1d0809fe81fe888bd82463912c13.fontdata"]
 
 [params]
 

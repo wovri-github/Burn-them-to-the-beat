@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://cu0sv7vbjvpqr"]
+
+[ext_resource type="Script" path="res://Code/dialogue.gd" id="1_01tcb"]
+
+[resource]
+script = ExtResource("1_01tcb")
+dialog_slides = PackedStringArray("Damn! I am too weak.", "I need help", "MAARIAAAN!!!", "Help me! Use \"right\" key with  ")
+dialog_starting_beat = PackedInt32Array(1, 4, 8, 12)
+dialog_end_beat = Array[int]([4, 8, 10, 16])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://h80ckumhkhx1"]
+[gd_scene load_steps=18 format=3 uid="uid://h80ckumhkhx1"]
 
 [ext_resource type="Script" path="res://Code/Game/Game.gd" id="1_y51tq"]
 [ext_resource type="Script" path="res://Code/Game/RandomPool.gd" id="2_ac1w3"]
@@ -8,8 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://d8ys1h6r0d4t" path="res://Code/SpaceEffect/BlockGroup.tscn" id="5_qe3rx"]
 [ext_resource type="Script" path="res://Code/Game/DanceManager.gd" id="6_fkh8t"]
 [ext_resource type="PackedScene" uid="uid://482qvsvj2xx2" path="res://Code/DancingGoblin.tscn" id="6_jjuxq"]
+[ext_resource type="Script" path="res://Code/Game/story.gd" id="11_rnb1c"]
+[ext_resource type="Texture2D" uid="uid://cye4gy8yieujf" path="res://Assets/DialougeBOX.png" id="12_2ymm5"]
 [ext_resource type="PackedScene" uid="uid://ctaap8kjywvu1" path="res://Code/Game/conductor.tscn" id="12_exmtr"]
+[ext_resource type="Script" path="res://TextBox.gd" id="13_p8gi1"]
 [ext_resource type="PackedScene" uid="uid://bjq88vs4wuxwq" path="res://Code/fireing_humans.tscn" id="14_cyj3i"]
+[ext_resource type="Resource" uid="uid://du3ifuemtq5do" path="res://Code/left_orc_dialoge.tres" id="14_eicdk"]
+[ext_resource type="Resource" uid="uid://cu0sv7vbjvpqr" path="res://Code/second_story.tres" id="15_hx0th"]
+[ext_resource type="FontFile" uid="uid://dk1k8buhdg0iv" path="res://Assets/font/bitfont.ttf" id="16_o6cia"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_071eo"]
+font = ExtResource("16_o6cia")
+font_color = Color(0.12549, 0.12549, 0.12549, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_y51tq")
@@ -17,68 +27,6 @@ _runtime_data = ExtResource("2_kjf7b")
 
 [node name="RandomPool" type="Node" parent="."]
 script = ExtResource("2_ac1w3")
-
-[node name="DanceManager" type="Node2D" parent="."]
-script = ExtResource("6_fkh8t")
-
-[node name="DancingGoblins" type="Node2D" parent="DanceManager"]
-
-[node name="DancingGoblin1" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
-visible = false
-position = Vector2(71, 229)
-rotation = 0.160599
-
-[node name="DancingGoblin2" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
-visible = false
-position = Vector2(490, 280)
-rotation = -0.139821
-scale = Vector2(2.5, 2.5)
-
-[node name="Goblin" parent="DanceManager/DancingGoblins/DancingGoblin2" index="0"]
-flip_h = true
-
-[node name="DancingGoblin3" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
-visible = false
-position = Vector2(463, 460)
-rotation = 0.00588244
-
-[node name="Goblin" parent="DanceManager/DancingGoblins/DancingGoblin3" index="0"]
-flip_h = true
-
-[node name="DancingGoblin4" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
-visible = false
-position = Vector2(413, 460)
-rotation = 0.0113119
-
-[node name="DancingGoblin5" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
-visible = false
-position = Vector2(44, 428)
-rotation = -0.000930503
-scale = Vector2(1.7, 1.7)
-
-[node name="DancingGoblin6" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
-visible = false
-position = Vector2(237, 232)
-rotation = -0.0153587
-scale = Vector2(2.2, 2.2)
-
-[node name="DancingGoblin7" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
-visible = false
-position = Vector2(170, 94)
-rotation = -0.00406003
-scale = Vector2(2.3, 2.3)
-
-[node name="Goblin" parent="DanceManager/DancingGoblins/DancingGoblin7" index="0"]
-position = Vector2(1.99592, 1.00811)
-
-[node name="ColorRect" parent="DanceManager/DancingGoblins/DancingGoblin7" index="1"]
-visible = false
-
-[node name="DancingGoblinGod" parent="DanceManager" instance=ExtResource("6_jjuxq")]
-visible = false
-modulate = Color(1, 1, 1, 0.25098)
-position = Vector2(262, 212)
-scale = Vector2(25, 25)
 
 [node name="HitGoblinManager" parent="." instance=ExtResource("4_w6fj2")]
 
@@ -209,10 +157,116 @@ offset_bottom = 410.0
 
 [node name="FireingHumans" parent="." instance=ExtResource("14_cyj3i")]
 
+[node name="Story" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_rnb1c")
+runtime_data = ExtResource("2_kjf7b")
+
+[node name="LeftBoyTextBox" type="NinePatchRect" parent="Story"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 65.0
+offset_top = 219.0
+offset_right = 231.0
+offset_bottom = 313.0
+texture = ExtResource("12_2ymm5")
+region_rect = Rect2(0, 0, 46, 30)
+script = ExtResource("13_p8gi1")
+dialoge = ExtResource("14_eicdk")
+second_dialoge = ExtResource("15_hx0th")
+
+[node name="Label" type="Label" parent="Story/LeftBoyTextBox"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 159.0
+offset_bottom = 72.0
+label_settings = SubResource("LabelSettings_071eo")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 35
+
+[node name="DanceManager" type="Node2D" parent="."]
+script = ExtResource("6_fkh8t")
+
+[node name="DancingGoblins" type="Node2D" parent="DanceManager"]
+
+[node name="DancingGoblin1" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(26, 237)
+rotation = 0.160599
+
+[node name="DancingGoblin2" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(490, 280)
+rotation = -0.139821
+scale = Vector2(2.5, 2.5)
+
+[node name="Goblin" parent="DanceManager/DancingGoblins/DancingGoblin2" index="0"]
+flip_h = true
+
+[node name="DancingGoblin3" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(209, 449)
+rotation = 0.00588244
+
+[node name="Goblin" parent="DanceManager/DancingGoblins/DancingGoblin3" index="0"]
+flip_h = true
+
+[node name="ColorRect" parent="DanceManager/DancingGoblins/DancingGoblin3" index="1"]
+visible = false
+
+[node name="DancingGoblin4" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(149, 449)
+rotation = 0.0113119
+
+[node name="ColorRect" parent="DanceManager/DancingGoblins/DancingGoblin4" index="1"]
+visible = false
+
+[node name="DancingGoblin5" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(81, 386)
+rotation = -0.000930503
+scale = Vector2(1.7, 1.7)
+
+[node name="ColorRect" parent="DanceManager/DancingGoblins/DancingGoblin5" index="1"]
+visible = false
+
+[node name="DancingGoblin6" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(237, 232)
+rotation = -0.0153587
+scale = Vector2(2.2, 2.2)
+
+[node name="DancingGoblin7" parent="DanceManager/DancingGoblins" instance=ExtResource("6_jjuxq")]
+visible = false
+position = Vector2(170, 94)
+rotation = -0.00406003
+scale = Vector2(2.3, 2.3)
+
+[node name="Goblin" parent="DanceManager/DancingGoblins/DancingGoblin7" index="0"]
+position = Vector2(1.99592, 1.00811)
+
+[node name="DancingGoblinGod" parent="DanceManager" instance=ExtResource("6_jjuxq")]
+visible = false
+modulate = Color(1, 1, 1, 0.25098)
+position = Vector2(262, 212)
+scale = Vector2(25, 25)
+
 [connection signal="hit_made" from="HitGoblinManager" to="." method="_on_hit_made"]
+[connection signal="hit_made" from="HitGoblinManager" to="Story" method="_on_hit_goblin_manager_hit_made"]
 [connection signal="flamed" from="FireingHumans" to="." method="_on_fireing_humans_flamed"]
 [connection signal="human_escaped" from="FireingHumans" to="." method="_on_fireing_humans_human_escaped"]
+[connection signal="show_left_side" from="Story" to="." method="_on_story_show_left_side" flags=6]
 
 [editable path="DanceManager/DancingGoblins/DancingGoblin2"]
 [editable path="DanceManager/DancingGoblins/DancingGoblin3"]
+[editable path="DanceManager/DancingGoblins/DancingGoblin4"]
+[editable path="DanceManager/DancingGoblins/DancingGoblin5"]
 [editable path="DanceManager/DancingGoblins/DancingGoblin7"]
