@@ -19,7 +19,7 @@ func spawn_human():
 
 func spawn_logick(_beat):
 	if _beat == 1:
-		active_measures = [4]
+		active_measures = [3]
 	if _beat == 8:
 		active_measures = [1,2]
 	if _beat == 16:

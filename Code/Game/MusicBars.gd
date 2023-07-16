@@ -38,3 +38,7 @@ func _on_beat(_beat, _measure, _tempo):
 	else:
 		for bar in right_bars:
 			bar.grow_bars()
+
+
+func _on_hit_goblin_manager_hit_made(is_correct, is_left_side):
+	color_bars(is_correct, is_left_side)

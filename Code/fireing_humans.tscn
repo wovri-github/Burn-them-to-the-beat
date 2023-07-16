@@ -108,7 +108,7 @@ script = ExtResource("4_f6vun")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_56inx")
 animation = &"fire"
-frame_progress = 0.370684
+frame_progress = 0.912357
 offset = Vector2(0, -3)
 
 [node name="FlameTimer" type="Timer" parent="Fire"]

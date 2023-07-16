@@ -96,8 +96,6 @@ func _on_fireing_humans_human_escaped():
 
 func _on_hit_made(is_correct, is_left_side):
 	factor_logic(is_correct)
-	$MusicBars.color_bars(is_correct, is_left_side)
-
 
 
 func _on_story_show_left_side():

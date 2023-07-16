@@ -50,31 +50,10 @@ func play_from_beat(beat):
 	play()
 	seek(beat * _sec_per_beat)
 	_beats_before_start = 3
-	#play_with_beat_offset(beat)
 
 func play_with_beat_offset(num):
 	_beats_before_start = num
 	offset_beat_timer.start(_sec_per_beat)
-
-
-
-#func tempo_logick(_beat):
-#	_beat /= 2
-#	if _beat == 8:
-#		_tempo = (0.5)
-#	if _beat == 64:
-#		_tempo = (1)
-#	if _beat == 88:
-#		_tempo = (0.5)
-#	if _beat == 128:
-#		_tempo = (1)
-#	if _beat == 160:
-#		_tempo = (0.5)
-#	if _beat == 192:
-#		_tempo = (1)
-#	if _beat == 224:
-#		_tempo = (0.5)
-#	GameEvents.emit_signal("music_beat", _beat)
 
 
 
@@ -84,7 +63,6 @@ func _on_finished():
 	_last_reported_beat = 1
 	_measure = 1
 	print("YouWin!")
-	#start_music()
 
 
 func _on_offset_beat_timer_timeout():

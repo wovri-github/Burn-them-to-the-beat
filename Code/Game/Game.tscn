@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://h80ckumhkhx1"]
+[gd_scene load_steps=16 format=3 uid="uid://h80ckumhkhx1"]
 
 [ext_resource type="Script" path="res://Code/Game/Game.gd" id="1_y51tq"]
-[ext_resource type="Script" path="res://Code/Game/RandomPool.gd" id="2_ac1w3"]
 [ext_resource type="Resource" uid="uid://c163liyttkno0" path="res://Code/runtime_data.tres" id="2_kjf7b"]
 [ext_resource type="Script" path="res://Code/Game/MusicBars.gd" id="4_1dme2"]
 [ext_resource type="PackedScene" uid="uid://cp6p3evs6p373" path="res://hit_goblin_manager.tscn" id="4_w6fj2"]
@@ -10,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://482qvsvj2xx2" path="res://Code/DancingGoblin.tscn" id="6_jjuxq"]
 [ext_resource type="Script" path="res://Code/Game/story.gd" id="11_rnb1c"]
 [ext_resource type="Texture2D" uid="uid://cye4gy8yieujf" path="res://Assets/DialougeBOX.png" id="12_2ymm5"]
-[ext_resource type="PackedScene" uid="uid://ctaap8kjywvu1" path="res://Code/Game/conductor.tscn" id="12_exmtr"]
 [ext_resource type="Script" path="res://TextBox.gd" id="13_p8gi1"]
 [ext_resource type="PackedScene" uid="uid://bjq88vs4wuxwq" path="res://Code/fireing_humans.tscn" id="14_cyj3i"]
 [ext_resource type="Resource" uid="uid://du3ifuemtq5do" path="res://Code/left_orc_dialoge.tres" id="14_eicdk"]
@@ -24,9 +22,6 @@ font_color = Color(0.12549, 0.12549, 0.12549, 1)
 [node name="Game" type="Node2D"]
 script = ExtResource("1_y51tq")
 _runtime_data = ExtResource("2_kjf7b")
-
-[node name="RandomPool" type="Node" parent="."]
-script = ExtResource("2_ac1w3")
 
 [node name="HitGoblinManager" parent="." instance=ExtResource("4_w6fj2")]
 
@@ -153,8 +148,6 @@ offset_top = 410.0
 offset_right = 415.0
 offset_bottom = 410.0
 
-[node name="Conductor" parent="." instance=ExtResource("12_exmtr")]
-
 [node name="FireingHumans" parent="." instance=ExtResource("14_cyj3i")]
 
 [node name="Story" type="Control" parent="."]
@@ -260,6 +253,7 @@ position = Vector2(262, 212)
 scale = Vector2(25, 25)
 
 [connection signal="hit_made" from="HitGoblinManager" to="." method="_on_hit_made"]
+[connection signal="hit_made" from="HitGoblinManager" to="MusicBars" method="_on_hit_goblin_manager_hit_made"]
 [connection signal="hit_made" from="HitGoblinManager" to="Story" method="_on_hit_goblin_manager_hit_made"]
 [connection signal="flamed" from="FireingHumans" to="." method="_on_fireing_humans_flamed"]
 [connection signal="human_escaped" from="FireingHumans" to="." method="_on_fireing_humans_human_escaped"]
