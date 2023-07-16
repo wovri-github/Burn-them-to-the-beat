@@ -65,5 +65,5 @@ disabled = true
 text = "Extreme "
 
 [connection signal="pressed" from="VBoxContainer/NormalB" to="." method="_on_normal_b_pressed"]
-[connection signal="pressed" from="VBoxContainer/HardB" to="." method="_on_normal_b_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExtremeB" to="." method="_on_normal_b_pressed"]
+[connection signal="pressed" from="VBoxContainer/HardB" to="." method="_on_hard_b_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExtremeB" to="." method="_on_extreme_b_pressed"]

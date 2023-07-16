@@ -2,13 +2,21 @@ extends Control
 
 var main_tscn = preload("res://Code/Main/main.tscn")
 
+func start_game(lvl_difficulty):
+	var main_inst = main_tscn.instantiate()
+	main_inst.init(lvl_difficulty)
+	get_tree().get_root().add_child(main_inst)
+	#get_tree().change_scene_to_packed(main_tscn)
+	queue_free()
+
+
 func _on_normal_b_pressed():
-	start_game()
+	start_game(Defaluts.LVL.NORMAL)
 
 
-func _on_endless_b_pressed():
-	#GameManager.mode("Endless")
-	start_game()
+func _on_hard_b_pressed():
+	start_game(Defaluts.LVL.HARD)
 
-func start_game():
-	get_tree().change_scene_to_packed(main_tscn)
+
+func _on_extreme_b_pressed():
+	start_game(Defaluts.LVL.EXTREME)
