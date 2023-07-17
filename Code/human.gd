@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var random_spawn_range = 10
+@export var random_spawn_range = 50
 var _speed := 0
 
 func init(speed):

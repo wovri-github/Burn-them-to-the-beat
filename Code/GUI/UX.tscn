@@ -98,7 +98,7 @@ text = "Leave"
 
 [node name="ScoreManager" parent="." instance=ExtResource("6_ga4g5")]
 layout_mode = 1
-offset_top = -61.0
-offset_bottom = -61.0
+offset_top = -182.0
+offset_bottom = -182.0
 
 [connection signal="pressed" from="LeaveB" to="." method="_on_leave_b_pressed"]

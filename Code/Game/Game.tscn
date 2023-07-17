@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://h80ckumhkhx1"]
+[gd_scene load_steps=18 format=3 uid="uid://h80ckumhkhx1"]
 
 [ext_resource type="Script" path="res://Code/Game/Game.gd" id="1_y51tq"]
 [ext_resource type="Resource" uid="uid://c163liyttkno0" path="res://Code/runtime_data.tres" id="2_kjf7b"]
+[ext_resource type="PackedScene" uid="uid://blshd046rs1xp" path="res://Code/Main/background.tscn" id="3_m7pa7"]
 [ext_resource type="Script" path="res://Code/Game/MusicBars.gd" id="4_1dme2"]
 [ext_resource type="PackedScene" uid="uid://cp6p3evs6p373" path="res://hit_goblin_manager.tscn" id="4_w6fj2"]
 [ext_resource type="PackedScene" uid="uid://d8ys1h6r0d4t" path="res://Code/SpaceEffect/BlockGroup.tscn" id="5_qe3rx"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bjq88vs4wuxwq" path="res://Code/fireing_humans.tscn" id="14_cyj3i"]
 [ext_resource type="Resource" uid="uid://du3ifuemtq5do" path="res://Code/left_orc_dialoge.tres" id="14_eicdk"]
 [ext_resource type="Resource" uid="uid://cu0sv7vbjvpqr" path="res://Code/second_story.tres" id="15_hx0th"]
+[ext_resource type="PackedScene" uid="uid://dkour2dh7ebam" path="res://Code/Player.tscn" id="16_asalf"]
 [ext_resource type="FontFile" uid="uid://dk1k8buhdg0iv" path="res://Assets/font/bitfont.ttf" id="16_o6cia"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_071eo"]
@@ -23,25 +25,25 @@ font_color = Color(0.12549, 0.12549, 0.12549, 1)
 script = ExtResource("1_y51tq")
 _runtime_data = ExtResource("2_kjf7b")
 
-[node name="HitGoblinManager" parent="." instance=ExtResource("4_w6fj2")]
+[node name="Background" parent="." instance=ExtResource("3_m7pa7")]
 
 [node name="MusicBars" type="Control" parent="."]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_left = -3.0
-offset_top = 23.0
+offset_top = 92.0
 offset_right = -3.0
-offset_bottom = 23.0
+offset_bottom = 92.0
 script = ExtResource("4_1dme2")
-metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="MusicBars"]
 layout_mode = 0
-offset_left = 52.0
-offset_top = 383.0
-offset_right = 467.0
-offset_bottom = 423.0
-color = Color(0.197937, 0.197937, 0.197937, 1)
+offset_left = -2.0
+offset_top = 390.0
+offset_right = 521.0
+offset_bottom = 430.0
+color = Color(0.113725, 0.113725, 0.113725, 1)
 
 [node name="Collector" type="Control" parent="MusicBars"]
 anchors_preset = 0
@@ -148,6 +150,9 @@ offset_top = 410.0
 offset_right = 415.0
 offset_bottom = 410.0
 
+[node name="HitGoblinManager" parent="." instance=ExtResource("4_w6fj2")]
+position = Vector2(257, 231)
+
 [node name="FireingHumans" parent="." instance=ExtResource("14_cyj3i")]
 
 [node name="Story" type="Control" parent="."]
@@ -160,12 +165,14 @@ runtime_data = ExtResource("2_kjf7b")
 
 [node name="LeftBoyTextBox" type="NinePatchRect" parent="Story"]
 visible = false
+self_modulate = Color(1, 1, 1, 0.666667)
+z_index = 15
 texture_filter = 1
 layout_mode = 0
-offset_left = 65.0
-offset_top = 219.0
-offset_right = 231.0
-offset_bottom = 313.0
+offset_left = 63.0
+offset_top = 328.0
+offset_right = 229.0
+offset_bottom = 422.0
 texture = ExtResource("12_2ymm5")
 region_rect = Rect2(0, 0, 46, 30)
 script = ExtResource("13_p8gi1")
@@ -173,6 +180,7 @@ dialoge = ExtResource("14_eicdk")
 second_dialoge = ExtResource("15_hx0th")
 
 [node name="Label" type="Label" parent="Story/LeftBoyTextBox"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 7.0
 offset_top = 6.0
@@ -251,6 +259,11 @@ visible = false
 modulate = Color(1, 1, 1, 0.25098)
 position = Vector2(262, 212)
 scale = Vector2(25, 25)
+
+[node name="Goblin" parent="." instance=ExtResource("16_asalf")]
+z_index = 15
+position = Vector2(238, 445)
+scale = Vector2(2.39583, 2.39583)
 
 [connection signal="hit_made" from="HitGoblinManager" to="." method="_on_hit_made"]
 [connection signal="hit_made" from="HitGoblinManager" to="MusicBars" method="_on_hit_goblin_manager_hit_made"]

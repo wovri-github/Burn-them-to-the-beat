@@ -18,8 +18,6 @@ var _beat_multiplier: int = 0
 var score = 0
 var hp = Defaluts.STARTING_HP
 
-@onready var fireing_humans = $FireingHumans
-
 
 
 func _ready():
@@ -54,9 +52,6 @@ func factor_logic(is_correct):
 	elif _factor_sum > 1 or _factor_progress > PROGRESS_FACTOR_DEPRECIATION:
 		_factor_progress -= PROGRESS_FACTOR_DEPRECIATION
 	_runtime_data.factor_progress = _factor_progress
-
-
-
 
 
 

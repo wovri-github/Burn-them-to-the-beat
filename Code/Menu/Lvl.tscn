@@ -47,9 +47,10 @@ offset_bottom = 340.0
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_type_variation = &"GreenButton"
-text = "Normal"
+text = "Story"
 
 [node name="HardB" type="Button" parent="VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_type_variation = &"OrangeButton"
@@ -57,6 +58,7 @@ disabled = true
 text = "Hard"
 
 [node name="ExtremeB" type="Button" parent="VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 tooltip_text = "Real game plot"

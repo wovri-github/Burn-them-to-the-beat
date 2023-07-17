@@ -27,3 +27,6 @@ func start_second_dialoge(starting_second_story_beat):
 	current_dialoge_id = 0
 	dialoge = second_dialoge
 	max_slides = dialoge.dialog_end_beat.size()
+
+func get_dialoge(dialoge: Dialogue, starting_beat: int):
+	pass

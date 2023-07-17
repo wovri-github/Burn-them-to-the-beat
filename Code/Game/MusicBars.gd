@@ -9,6 +9,7 @@ func _ready():
 	GameEvents.beat.connect(_on_beat)
 	all_bars.append_array(left_bars)
 	all_bars.append_array(right_bars)
+	
 
 func show_left_group():
 	$Collector/LeftGroup.show()

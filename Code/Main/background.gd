@@ -14,9 +14,7 @@ func _input(event):
 		$LeverSwitchOff.start(Defaluts.FIRE_TIME_SEC)
 
 func switch_lever(state):
-	var lever_position = Vector2i(7,17)
-	if state == LEVER.OFF:
-		lever_position = Vector2i(7,17)
+	var lever_position = Vector2i(8,17)
 	set_pattern(2, lever_position, tileset.get_pattern(state))
 	
 

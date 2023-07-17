@@ -23,7 +23,7 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 20
-layer_2/tile_data = PackedInt32Array()
+layer_2/tile_data = PackedInt32Array(1114120, 131072, 5, 1179656, 131072, 5, 1114121, 65536, 5, 1179657, 65536, 6, 1114122, 131072, 5, 1179658, 131072, 5)
 script = ExtResource("2_d5n1d")
 
 [node name="ColorRect" type="ColorRect" parent="."]

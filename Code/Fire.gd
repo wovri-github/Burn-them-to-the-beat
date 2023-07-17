@@ -2,6 +2,7 @@
 extends Area2D
 
 @export var flame_big_scale: float = 3
+@export var easy_mode := false
 var no_one_burned = true
 @onready var fires_sprites = $Sprites.get_children()
 
@@ -21,7 +22,7 @@ func _input(event):
 func big_flame():
 	for sprite in fires_sprites:
 		sprite.set_scale(Vector2(flame_big_scale, flame_big_scale))
-	if not $FlameTimer.is_stopped():
+	if easy_mode and not $FlameTimer.is_stopped():
 		_on_flame_timer_timeout()
 	$FlameTimer.start()
 
@@ -46,7 +47,7 @@ func _on_flame_timer_timeout():
 
 
 func _on_area_entered(area):
-	if not $FlameTimer.is_stopped():
+	if easy_mode and $FlameTimer.is_stopped():
 		no_one_burned = false
 		get_parent().emit_signal("flamed", true)
 		area.die()

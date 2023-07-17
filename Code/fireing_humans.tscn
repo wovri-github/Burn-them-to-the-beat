@@ -1,9 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://bjq88vs4wuxwq"]
+[gd_scene load_steps=18 format=3 uid="uid://bjq88vs4wuxwq"]
 
 [ext_resource type="Script" path="res://Code/fireing_humans.gd" id="1_xkntq"]
+[ext_resource type="PackedScene" uid="uid://blshd046rs1xp" path="res://Code/Main/background.tscn" id="2_32hdd"]
 [ext_resource type="Texture2D" uid="uid://e52cetmh23rl" path="res://Assets/bluefire.png" id="2_qclpc"]
 [ext_resource type="Texture2D" uid="uid://35ykn8hqaee6" path="res://Assets/fire.png" id="3_wp5k4"]
 [ext_resource type="Script" path="res://Code/Fire.gd" id="4_f6vun"]
+[ext_resource type="Texture2D" uid="uid://be4pifcnr6j4n" path="res://Assets/2d_light.webp" id="6_vrebc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1iue"]
+size = Vector2(28, 138)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uoimr"]
 atlas = ExtResource("2_qclpc")
@@ -71,62 +76,114 @@ animations = [{
 }],
 "loop": true,
 "name": &"fire",
-"speed": 11.0
+"speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1iue"]
-size = Vector2(20, 56)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spjfg"]
-size = Vector2(20, 76)
+size = Vector2(20, 163)
 
 [node name="FireingHumans" type="Node2D"]
 script = ExtResource("1_xkntq")
 
-[node name="Ground" type="ColorRect" parent="."]
-offset_top = 472.0
-offset_right = 511.0
-offset_bottom = 512.0
-color = Color(0.368627, 0.188235, 0.168627, 1)
-
-[node name="FirePlace" type="ColorRect" parent="."]
-offset_left = 250.0
-offset_top = 491.0
-offset_right = 262.0
-offset_bottom = 500.0
-color = Color(0.160784, 0.152941, 0.14902, 1)
+[node name="Background" parent="." instance=ExtResource("2_32hdd")]
 
 [node name="HumanSpawn" type="Node2D" parent="."]
-position = Vector2(539, 492)
+position = Vector2(535, 370)
 
 [node name="Fire" type="Area2D" parent="."]
-position = Vector2(255, 492)
+position = Vector2(245, 370)
 monitorable = false
 script = ExtResource("4_f6vun")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Fire"]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_56inx")
-animation = &"fire"
-frame_progress = 0.912357
-offset = Vector2(0, -3)
-
 [node name="FlameTimer" type="Timer" parent="Fire"]
-wait_time = 0.2
+wait_time = 0.15
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fire"]
-position = Vector2(0, -4)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_b1iue")
+
+[node name="Sprites" type="Node2D" parent="Fire"]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Fire/Sprites"]
+texture_filter = 1
+position = Vector2(-1, -50)
+sprite_frames = SubResource("SpriteFrames_56inx")
+animation = &"fire"
+frame_progress = 0.417553
+offset = Vector2(0, -3)
+
+[node name="PointLight2D" type="PointLight2D" parent="Fire/Sprites/Sprite"]
+position = Vector2(-1, -1)
+color = Color(1, 1, 0.553002, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("6_vrebc")
+
+[node name="Sprite2" type="AnimatedSprite2D" parent="Fire/Sprites"]
+texture_filter = 1
+position = Vector2(-1, -24)
+sprite_frames = SubResource("SpriteFrames_56inx")
+animation = &"fire"
+frame_progress = 0.0209546
+offset = Vector2(0, -3)
+
+[node name="PointLight2D" type="PointLight2D" parent="Fire/Sprites/Sprite2"]
+position = Vector2(-1, -1)
+color = Color(1, 1, 0.553002, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("6_vrebc")
+
+[node name="Sprite3" type="AnimatedSprite2D" parent="Fire/Sprites"]
+texture_filter = 1
+position = Vector2(-1, 2)
+sprite_frames = SubResource("SpriteFrames_56inx")
+animation = &"fire"
+frame_progress = 0.466097
+offset = Vector2(0, -3)
+
+[node name="PointLight2D" type="PointLight2D" parent="Fire/Sprites/Sprite3"]
+position = Vector2(-1, -1)
+color = Color(1, 1, 0.553002, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("6_vrebc")
+
+[node name="Sprite4" type="AnimatedSprite2D" parent="Fire/Sprites"]
+texture_filter = 1
+position = Vector2(-1, 28)
+sprite_frames = SubResource("SpriteFrames_56inx")
+animation = &"fire"
+frame_progress = 0.416524
+offset = Vector2(0, -3)
+
+[node name="PointLight2D" type="PointLight2D" parent="Fire/Sprites/Sprite4"]
+position = Vector2(-1, -1)
+color = Color(1, 1, 0.553002, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("6_vrebc")
+
+[node name="Sprite5" type="AnimatedSprite2D" parent="Fire/Sprites"]
+texture_filter = 1
+position = Vector2(-1, 50)
+sprite_frames = SubResource("SpriteFrames_56inx")
+animation = &"fire"
+frame_progress = 0.584726
+offset = Vector2(0, -3)
 
 [node name="DeleteArea" type="Area2D" parent="."]
 position = Vector2(7, 480)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeleteArea"]
+position = Vector2(-9, -106)
 shape = SubResource("RectangleShape2D_spjfg")
 
 [node name="SecondSpawn" type="Timer" parent="."]
 wait_time = 0.571
 
+[connection signal="area_entered" from="Fire" to="Fire" method="_on_area_entered"]
 [connection signal="timeout" from="Fire/FlameTimer" to="Fire" method="_on_flame_timer_timeout"]
 [connection signal="area_exited" from="DeleteArea" to="." method="_on_delete_area_area_exited"]
 [connection signal="timeout" from="SecondSpawn" to="." method="_on_second_spawn_timeout"]
