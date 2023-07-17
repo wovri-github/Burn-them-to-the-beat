@@ -2,12 +2,14 @@
 extends Area2D
 
 @export var flame_big_scale: float = 3
-
+var no_one_burned = true
+@onready var fires_sprites = $Sprites.get_children()
 
 
 func _ready():
-	$Sprite.set_scale(Vector2.ONE)
-	$Sprite.play("fire")
+	for sprite in fires_sprites:
+		sprite.set_scale(Vector2.ONE)
+		sprite.play("fire")
 
 
 func _input(event):
@@ -17,7 +19,10 @@ func _input(event):
 
 
 func big_flame():
-	$Sprite.set_scale(Vector2(flame_big_scale, flame_big_scale))
+	for sprite in fires_sprites:
+		sprite.set_scale(Vector2(flame_big_scale, flame_big_scale))
+	if not $FlameTimer.is_stopped():
+		_on_flame_timer_timeout()
 	$FlameTimer.start()
 
 
@@ -28,8 +33,20 @@ func burn_human():
 		_is_human_burned = true
 		for human in humans_on_fire:
 			human.die()
-	get_parent().emit_signal("flamed", _is_human_burned)
+		no_one_burned = false
+		get_parent().emit_signal("flamed", true)
 
 
 func _on_flame_timer_timeout():
-	$Sprite.set_scale(Vector2.ONE)
+	for sprite in fires_sprites:
+		sprite.set_scale(Vector2.ONE)
+	if no_one_burned:
+		get_parent().emit_signal("flamed", false)
+	no_one_burned = true
+
+
+func _on_area_entered(area):
+	if not $FlameTimer.is_stopped():
+		no_one_burned = false
+		get_parent().emit_signal("flamed", true)
+		area.die()
