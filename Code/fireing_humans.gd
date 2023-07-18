@@ -23,13 +23,13 @@ func spawn_logick(_beat):
 	if _beat == 8:
 		active_measures = [1,2]
 	if _beat == 16:
-		active_measures = []
+		random_measures()
 	if _beat == 24:
-		active_measures = [1,3,5,7]
+		random_measures()
 	if _beat == 32:
 		active_measures = [2,3,4,5,5,7,8]
 	if _beat == 40:
-		active_measures = [1,3,5,7]
+		random_measures()
 	if _beat == 56:
 		active_measures = [6,7,8]
 	if _beat == 64:
@@ -37,7 +37,7 @@ func spawn_logick(_beat):
 		active_measures = [1, 2, 3, 4, 5, 6, 7, 8]
 	if _beat == 88:
 		double_spawn(false)
-		random_measures()
+		active_measures = []
 	if _beat == 96:
 		random_measures()
 	if _beat == 104:
