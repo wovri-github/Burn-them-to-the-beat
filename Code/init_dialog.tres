@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://du3ifuemtq5do"]
+
+[ext_resource type="Script" path="res://Code/dialogue.gd" id="1_b4brf"]
+
+[resource]
+script = ExtResource("1_b4brf")
+texts = PackedStringArray("Use SPACE for burning", "More is comming!", "Burn them all!")
+duration = Array[int]([6, 3, 0])
+offset_beat = 0

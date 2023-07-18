@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://h80ckumhkhx1"]
+[gd_scene load_steps=19 format=3 uid="uid://h80ckumhkhx1"]
 
 [ext_resource type="Script" path="res://Code/Game/Game.gd" id="1_y51tq"]
 [ext_resource type="Resource" uid="uid://c163liyttkno0" path="res://Code/runtime_data.tres" id="2_kjf7b"]
@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://d8ys1h6r0d4t" path="res://Code/SpaceEffect/BlockGroup.tscn" id="5_qe3rx"]
 [ext_resource type="Script" path="res://Code/Game/DanceManager.gd" id="6_fkh8t"]
 [ext_resource type="PackedScene" uid="uid://482qvsvj2xx2" path="res://Code/DancingGoblin.tscn" id="6_jjuxq"]
+[ext_resource type="Resource" uid="uid://du3ifuemtq5do" path="res://Code/init_dialog.tres" id="11_g365p"]
 [ext_resource type="Script" path="res://Code/Game/story.gd" id="11_rnb1c"]
 [ext_resource type="Texture2D" uid="uid://cye4gy8yieujf" path="res://Assets/DialougeBOX.png" id="12_2ymm5"]
+[ext_resource type="Script" path="res://Code/Game/RandomTextManager.gd" id="13_iurd3"]
 [ext_resource type="Script" path="res://TextBox.gd" id="13_p8gi1"]
 [ext_resource type="PackedScene" uid="uid://bjq88vs4wuxwq" path="res://Code/fireing_humans.tscn" id="14_cyj3i"]
-[ext_resource type="Resource" uid="uid://du3ifuemtq5do" path="res://Code/left_orc_dialoge.tres" id="14_eicdk"]
-[ext_resource type="Resource" uid="uid://cu0sv7vbjvpqr" path="res://Code/second_story.tres" id="15_hx0th"]
+[ext_resource type="Resource" uid="uid://15xuf645t7vj" path="res://Code/random_happy_dialogs.tres" id="14_g2vek"]
 [ext_resource type="PackedScene" uid="uid://dkour2dh7ebam" path="res://Code/Player.tscn" id="16_asalf"]
 [ext_resource type="FontFile" uid="uid://dk1k8buhdg0iv" path="res://Assets/font/bitfont.ttf" id="16_o6cia"]
 
@@ -162,8 +163,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("11_rnb1c")
 runtime_data = ExtResource("2_kjf7b")
+init_dialog = ExtResource("11_g365p")
 
-[node name="LeftBoyTextBox" type="NinePatchRect" parent="Story"]
+[node name="MainTextBox" type="NinePatchRect" parent="Story"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.666667)
 z_index = 15
@@ -176,10 +178,8 @@ offset_bottom = 422.0
 texture = ExtResource("12_2ymm5")
 region_rect = Rect2(0, 0, 46, 30)
 script = ExtResource("13_p8gi1")
-dialoge = ExtResource("14_eicdk")
-second_dialoge = ExtResource("15_hx0th")
 
-[node name="Label" type="Label" parent="Story/LeftBoyTextBox"]
+[node name="Label" type="Label" parent="Story/MainTextBox"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 7.0
@@ -191,6 +191,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 35
+
+[node name="QuickTextTimer" type="Timer" parent="Story/MainTextBox"]
+one_shot = true
+
+[node name="RandomTextManager" type="Node" parent="Story"]
+script = ExtResource("13_iurd3")
+random_happy_dialoges = ExtResource("14_g2vek")
 
 [node name="DanceManager" type="Node2D" parent="."]
 script = ExtResource("6_fkh8t")
@@ -269,8 +276,10 @@ scale = Vector2(2.39583, 2.39583)
 [connection signal="hit_made" from="HitGoblinManager" to="MusicBars" method="_on_hit_goblin_manager_hit_made"]
 [connection signal="hit_made" from="HitGoblinManager" to="Story" method="_on_hit_goblin_manager_hit_made"]
 [connection signal="flamed" from="FireingHumans" to="." method="_on_fireing_humans_flamed"]
+[connection signal="flamed" from="FireingHumans" to="Story/RandomTextManager" method="_on_fireing_humans_flamed"]
 [connection signal="human_escaped" from="FireingHumans" to="." method="_on_fireing_humans_human_escaped"]
 [connection signal="show_left_side" from="Story" to="." method="_on_story_show_left_side" flags=6]
+[connection signal="timeout" from="Story/MainTextBox/QuickTextTimer" to="Story/MainTextBox" method="_on_quick_text_timer_timeout"]
 
 [editable path="DanceManager/DancingGoblins/DancingGoblin2"]
 [editable path="DanceManager/DancingGoblins/DancingGoblin3"]

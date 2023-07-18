@@ -1,7 +1,5 @@
 extends Node
 
-func _ready():
-	init(Defaluts.LVL.EXTREME)
 
 func init(lvl_mode):
 	match lvl_mode:
