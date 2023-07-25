@@ -110,7 +110,7 @@ texture_filter = 1
 position = Vector2(-1, -50)
 sprite_frames = SubResource("SpriteFrames_56inx")
 animation = &"fire"
-frame_progress = 0.473122
+frame_progress = 0.750513
 offset = Vector2(0, -3)
 
 [node name="PointLight2D" type="PointLight2D" parent="Fire/Sprites/Sprite"]
@@ -125,7 +125,7 @@ texture_filter = 1
 position = Vector2(-1, -24)
 sprite_frames = SubResource("SpriteFrames_56inx")
 animation = &"fire"
-frame_progress = 0.0765298
+frame_progress = 0.353921
 offset = Vector2(0, -3)
 
 [node name="PointLight2D" type="PointLight2D" parent="Fire/Sprites/Sprite2"]
@@ -140,7 +140,7 @@ texture_filter = 1
 position = Vector2(-1, 2)
 sprite_frames = SubResource("SpriteFrames_56inx")
 animation = &"fire"
-frame_progress = 0.521666
+frame_progress = 0.799057
 offset = Vector2(0, -3)
 
 [node name="PointLight2D" type="PointLight2D" parent="Fire/Sprites/Sprite3"]
@@ -155,7 +155,7 @@ texture_filter = 1
 position = Vector2(-1, 28)
 sprite_frames = SubResource("SpriteFrames_56inx")
 animation = &"fire"
-frame_progress = 0.472092
+frame_progress = 0.749482
 offset = Vector2(0, -3)
 
 [node name="PointLight2D" type="PointLight2D" parent="Fire/Sprites/Sprite4"]
@@ -170,7 +170,7 @@ texture_filter = 1
 position = Vector2(-1, 50)
 sprite_frames = SubResource("SpriteFrames_56inx")
 animation = &"fire"
-frame_progress = 0.640296
+frame_progress = 0.917687
 offset = Vector2(0, -3)
 
 [node name="DeleteArea" type="Area2D" parent="."]

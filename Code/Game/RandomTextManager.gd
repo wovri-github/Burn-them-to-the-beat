@@ -15,7 +15,7 @@ func _on_fireing_humans_flamed(_is_human_burned):
 		return
 	if randf() > text_chance:
 		return
-	if main_text_box.dialoge == null:
+	if not get_parent().is_playing():
 		var random_text = random_happy_dialoges.texts[randi_range(0, max_texts - 1)]
 		main_text_box.show_text_immediatly(random_text)
 

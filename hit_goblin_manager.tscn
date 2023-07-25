@@ -8,27 +8,14 @@ script = ExtResource("1_4eq42")
 
 [node name="GoblinR" parent="." instance=ExtResource("2_oyi2p")]
 visible = false
-position = Vector2(52.281, -57.742)
-scale = Vector2(3.28125, 4.85484)
-_is_attacking_right = true
-
-[node name="GoblinR2" parent="." instance=ExtResource("2_oyi2p")]
-visible = false
-position = Vector2(167.281, -57.742)
+position = Vector2(136.281, -57.742)
 scale = Vector2(3.28125, 4.85484)
 flip_h = true
 _is_attacking_right = true
 
 [node name="GoblinL" parent="." instance=ExtResource("2_oyi2p")]
 visible = false
-position = Vector2(-52.5, -57.4359)
-scale = Vector2(3.28125, 4.85484)
-flip_h = true
-_is_attacking_left = true
-
-[node name="GoblinL2" parent="." instance=ExtResource("2_oyi2p")]
-visible = false
-position = Vector2(-172.5, -58.436)
+position = Vector2(-115.5, -57.4359)
 scale = Vector2(3.28125, 4.85484)
 _is_attacking_left = true
 

@@ -38,17 +38,9 @@ func spawn_logick(_beat):
 	if _beat == 88:
 		double_spawn(false)
 		active_measures = []
-	if _beat == 96:
-		random_measures()
-	if _beat == 104:
-		random_measures()
-	if _beat == 112:
-		random_measures()
-	if _beat == 120:
-		random_measures()
-	if _beat == 128:
-		double_spawn(true)
-		active_measures = [1, 2, 3, 4, 5, 6, 7, 8]
+#	if _beat == 128:
+#		double_spawn(true)
+#		active_measures = [1, 2, 3, 4, 5, 6, 7, 8]
 	if _beat == 160:
 		double_spawn(false)
 		active_measures = [1, 3, 5, 7]

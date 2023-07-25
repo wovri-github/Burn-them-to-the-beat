@@ -1,16 +1,22 @@
+@tool
 extends Node2D
 
 signal hit_made(is_correct: bool, is_left_side: bool)
 
 const deviation_sec = 0.180
+@export var is_left_goblin_visible: bool = false:
+	set(new_state):
+		is_left_goblin_visible = new_state
+		$GoblinL.visible = is_left_goblin_visible
+@export var is_right_goblin_visible: bool = false:
+	set(new_state):
+		is_right_goblin_visible = new_state
+		$GoblinR.visible = is_right_goblin_visible
 var left_on = false
 var right_on = false
-@onready var GoblinsL = [$GoblinL, $GoblinL2]
-@onready var GoblinsR = [$GoblinR, $GoblinR2]
 
 
 func _ready():
-	GameEvents.new_factor_sum.connect(_on_new_factor_sum)
 	GameEvents.beat.connect(_on_beat)
 
 
@@ -50,15 +56,6 @@ func shake():
 	await get_tree().create_timer(0.1).timeout
 	get_parent().set_global_position(Vector2(0,0))
 
-
-func _on_new_factor_sum(factor):
-#	if factor == 2:
-#		GoblinsR[1].hide()
-#		return
-	if factor == 3:
-		GoblinsR[1].show()
-#		GoblinsL[1].hide()
-		return
-	if factor == 4:
-		GoblinsL[1].show()
-		return
+func change_goblin_visibility(new_state):
+	$GoblinL.visible = new_state
+	$GoblinR.visible = new_state

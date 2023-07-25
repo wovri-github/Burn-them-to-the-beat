@@ -20,6 +20,7 @@ var hp = Defaluts.STARTING_HP
 
 
 
+
 func _ready():
 	GameEvents.emit_signal("new_factor_sum", _factor_sum)
 	GameEvents.new_boxes_number_picked.connect(_on_new_boxes_number_picked)
