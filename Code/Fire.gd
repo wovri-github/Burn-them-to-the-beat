@@ -2,7 +2,6 @@
 extends Area2D
 
 @export var flame_big_scale: float = 3
-@export var easy_mode := false
 var no_one_burned = true
 @onready var fires_sprites = $Sprites.get_children()
 
@@ -22,16 +21,18 @@ func _input(event):
 func big_flame():
 	for sprite in fires_sprites:
 		sprite.set_scale(Vector2(flame_big_scale, flame_big_scale))
-	if easy_mode and not $FlameTimer.is_stopped():
-		_on_flame_timer_timeout()
+	if not $FlameTimer.is_stopped():
+		check_is_someone_burned()
 	$FlameTimer.start()
 
+func check_is_someone_burned():
+	if no_one_burned:
+		get_parent().emit_signal("flamed", false)
+	no_one_burned = true
 
 func burn_human():
 	var humans_on_fire = self.get_overlapping_areas()
-	var _is_human_burned = false
 	if humans_on_fire:
-		_is_human_burned = true
 		for human in humans_on_fire:
 			human.die()
 		no_one_burned = false
@@ -41,13 +42,10 @@ func burn_human():
 func _on_flame_timer_timeout():
 	for sprite in fires_sprites:
 		sprite.set_scale(Vector2.ONE)
-	if no_one_burned:
-		get_parent().emit_signal("flamed", false)
-	no_one_burned = true
-
+	check_is_someone_burned()
 
 func _on_area_entered(area):
-	if easy_mode and $FlameTimer.is_stopped():
+	if $FlameTimer.is_stopped():
 		no_one_burned = false
 		get_parent().emit_signal("flamed", true)
 		area.die()
