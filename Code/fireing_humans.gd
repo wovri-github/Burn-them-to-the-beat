@@ -11,7 +11,6 @@ var active_measures: Array = []
 func _ready():
 	GameEvents.beat.connect(_on_beat)
 
-
 func spawn_human():
 	var human_inst = human_tscn.instantiate()
 	human_inst.init(speed)

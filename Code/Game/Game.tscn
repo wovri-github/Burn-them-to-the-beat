@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://h80ckumhkhx1"]
+[gd_scene load_steps=24 format=3 uid="uid://h80ckumhkhx1"]
 
 [ext_resource type="Script" path="res://Code/Game/Game.gd" id="1_y51tq"]
 [ext_resource type="Resource" uid="uid://c163liyttkno0" path="res://Code/runtime_data.tres" id="2_kjf7b"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://d8ys1h6r0d4t" path="res://Code/SpaceEffect/BlockGroup.tscn" id="5_qe3rx"]
 [ext_resource type="Script" path="res://Code/Game/DanceManager.gd" id="6_fkh8t"]
 [ext_resource type="PackedScene" uid="uid://482qvsvj2xx2" path="res://Code/DancingGoblin.tscn" id="6_jjuxq"]
-[ext_resource type="Script" path="res://Code/dialogue.gd" id="9_v8v2q"]
 [ext_resource type="Script" path="res://Code/Game/story.gd" id="11_rnb1c"]
 [ext_resource type="Texture2D" uid="uid://cye4gy8yieujf" path="res://Assets/DialougeBOX.png" id="12_2ymm5"]
 [ext_resource type="Script" path="res://Code/Game/RandomTextManager.gd" id="13_iurd3"]
@@ -337,24 +336,6 @@ _data = {
 "Story3": SubResource("Animation_17y2o")
 }
 
-[sub_resource type="Resource" id="Resource_3k2it"]
-script = ExtResource("9_v8v2q")
-texts = PackedStringArray("Use SPACE for burning", "More is comming!", "Burn them all!")
-duration = Array[int]([6, 3, 0])
-offset_beat = 0
-
-[sub_resource type="Resource" id="Resource_1jlas"]
-script = ExtResource("9_v8v2q")
-texts = PackedStringArray("Ahh, that was awesome!", "I need to call boyz.", "Hey Marian!", "Wake up boyz for the shoow")
-duration = Array[int]([0, 0, 0, 0])
-offset_beat = 0
-
-[sub_resource type="Resource" id="Resource_2jy8m"]
-script = ExtResource("9_v8v2q")
-texts = PackedStringArray("Hm?", "Okey, boss. ", "Click LEFT with rythm (bottom)")
-duration = Array[int]([0, 2, 999])
-offset_beat = 0
-
 [sub_resource type="LabelSettings" id="LabelSettings_071eo"]
 font = ExtResource("16_o6cia")
 font_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -500,9 +481,6 @@ libraries = {
 }
 script = ExtResource("11_rnb1c")
 runtime_data = ExtResource("2_kjf7b")
-init_dialog = SubResource("Resource_3k2it")
-story_dialog = SubResource("Resource_1jlas")
-marian_story_dialog = SubResource("Resource_2jy8m")
 
 [node name="MainTextBox" type="NinePatchRect" parent="Story"]
 visible = false
@@ -675,7 +653,6 @@ scale = Vector2(2.39583, 2.39583)
 [connection signal="flamed" from="FireingHumans" to="." method="_on_fireing_humans_flamed"]
 [connection signal="flamed" from="FireingHumans" to="Story/RandomTextManager" method="_on_fireing_humans_flamed"]
 [connection signal="human_escaped" from="FireingHumans" to="." method="_on_fireing_humans_human_escaped"]
-[connection signal="show_left_side" from="Story" to="." method="_on_story_show_left_side"]
 [connection signal="timeout" from="Story/MainTextBox/QuickTextTimer" to="Story/MainTextBox" method="_on_quick_text_timer_timeout"]
 [connection signal="timeout" from="Story/MarianTextBox/QuickTextTimer" to="Story/MarianTextBox" method="_on_quick_text_timer_timeout"]
 [connection signal="timeout" from="Story/AdamTextBox2/QuickTextTimer" to="Story/AdamTextBox2" method="_on_quick_text_timer_timeout"]
