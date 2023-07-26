@@ -12,7 +12,7 @@ signal music_beat(beat: int)
 
 signal setted_beat_multiplier(beat_multiplier: int)
 
-
+signal hit_made(is_correct: bool, is_left_side: bool)
 signal beat(_song_position_in_beats: int, _measure: int, tempo: int)
 signal scored(score)
 signal hp_changed(hp)

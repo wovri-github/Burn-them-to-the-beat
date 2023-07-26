@@ -1,7 +1,6 @@
 @tool
 extends Node2D
 
-signal hit_made(is_correct: bool, is_left_side: bool)
 
 const deviation_sec = 0.180
 @export var is_left_goblin_visible: bool = false:
@@ -40,17 +39,17 @@ func _input(event):
 
 func check_timer_left():
 	if $HitTimerLeft.is_stopped():
-		self.emit_signal("hit_made", false, true)
+		GameEvents.emit_signal("hit_made", false, true)
 	else:
 		$HitTimerLeft.stop()
-		self.emit_signal("hit_made", true, true)
+		GameEvents.emit_signal("hit_made", true, true)
 
 func check_timer_right():
 	if $HitTimerRight.is_stopped():
-		self.emit_signal("hit_made", false, false)
+		GameEvents.emit_signal("hit_made", false, false)
 	else:
 		$HitTimerRight.stop()
-		self.emit_signal("hit_made", true, false)
+		GameEvents.emit_signal("hit_made", true, false)
 
 func shake():
 	get_parent().set_global_position(Vector2(0,7))

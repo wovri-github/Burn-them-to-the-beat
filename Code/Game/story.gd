@@ -9,6 +9,7 @@ var starting_second_story_beat: int = -1
 
 func _ready():
 	GameEvents.beat.connect(_on_beat)
+	GameEvents.hit_made.connect(_on_hit_made)
 
 
 func story(_beat):
@@ -34,11 +35,11 @@ func _on_beat(_beat, measure, tempo):
 	check_story3_condition(_beat)
 	story(_beat)
 
-func _on_hit_goblin_manager_hit_made(is_correct, is_left_side):
+func _on_hit_made(is_correct, is_left_side):
 	if is_correct and is_left_side and not is_factor_progress_above_30:
 		$MarianTextBox.hide()
 	if is_correct and not is_left_side:
 		$AdamTextBox2.hide()
-		$"../HitGoblinManager".disconnect("hit_made",_on_hit_goblin_manager_hit_made)
+		GameEvents.disconnect("hit_made",_on_hit_made)
 	if runtime_data.factor_progress >= 30:
 		is_factor_progress_above_30 = true

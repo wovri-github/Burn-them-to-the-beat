@@ -20,6 +20,7 @@ var is_factor_first_time = true
 
 
 func _ready():
+	GameEvents.hit_made.connect(_on_hit_made)
 #	change_sequence()
 #	GameEvents.music_beat.connect(_on_music_bit_timeout)
 	GameEvents.new_factor_sum.connect(_on_new_factor_sum)
@@ -27,6 +28,10 @@ func _ready():
 	pass
 
 
+func _on_hit_made(is_correct, is_left_side):
+	if is_factor_first_time:
+		is_factor_first_time = false
+		$Factor.show()
 
 func _on_setted_beat_multiplier(multiplier):
 	if multiplier == 0:
@@ -57,10 +62,6 @@ func _on_new_factor_sum(value):
 		FactorText.set_text("[x11] (MAX)")
 	else:
 		FactorText.set_text("[x" + str(value)+"]")
-	
-	if is_factor_first_time:
-		is_factor_first_time = false
-		$Factor.show()
 #	if not was_info and value == 1: 
 #		was_info = true
 #		$Info.text = "Click for points!"

@@ -46,7 +46,7 @@ func _on_flame_timer_timeout():
 	check_is_someone_burned()
 
 func _on_area_entered(area):
-	if $FlameTimer.is_stopped():
+	if not $FlameTimer.is_stopped():
 		no_one_burned = false
 		get_parent().emit_signal("flamed", true)
 		area.die()

@@ -7,6 +7,7 @@ extends Control
 
 func _ready():
 	GameEvents.beat.connect(_on_beat)
+	GameEvents.hit_made.connect(_on_hit_made)
 	all_bars.append_array(left_bars)
 	all_bars.append_array(right_bars)
 	
@@ -42,5 +43,5 @@ func _on_beat(_beat, _measure, _tempo):
 			bar.grow_bars()
 
 
-func _on_hit_goblin_manager_hit_made(is_correct, is_left_side):
+func _on_hit_made(is_correct, is_left_side):
 	color_bars(is_correct, is_left_side)

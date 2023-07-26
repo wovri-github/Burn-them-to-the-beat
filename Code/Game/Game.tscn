@@ -366,7 +366,6 @@ offset_bottom = 426.0
 color = Color(0.113725, 0.113725, 0.113725, 1)
 
 [node name="Collector" type="Control" parent="MusicBars"]
-visible = false
 anchors_preset = 0
 
 [node name="LeftGroup" type="Control" parent="MusicBars/Collector"]
@@ -649,9 +648,6 @@ z_index = 15
 position = Vector2(238, 445)
 scale = Vector2(2.39583, 2.39583)
 
-[connection signal="hit_made" from="HitGoblinManager" to="." method="_on_hit_made"]
-[connection signal="hit_made" from="HitGoblinManager" to="MusicBars" method="_on_hit_goblin_manager_hit_made"]
-[connection signal="hit_made" from="HitGoblinManager" to="Story" method="_on_hit_goblin_manager_hit_made"]
 [connection signal="flamed" from="FireingHumans" to="." method="_on_fireing_humans_flamed"]
 [connection signal="flamed" from="FireingHumans" to="Story/RandomTextManager" method="_on_fireing_humans_flamed"]
 [connection signal="human_escaped" from="FireingHumans" to="." method="_on_fireing_humans_human_escaped"]

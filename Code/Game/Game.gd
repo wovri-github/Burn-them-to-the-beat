@@ -25,6 +25,7 @@ func _ready():
 	GameEvents.emit_signal("new_factor_sum", _factor_sum)
 	GameEvents.new_boxes_number_picked.connect(_on_new_boxes_number_picked)
 	GameEvents.new_pool_picked.connect(_on_new_pool_picked)
+	GameEvents.hit_made.connect(_on_hit_made)
 
 
 
