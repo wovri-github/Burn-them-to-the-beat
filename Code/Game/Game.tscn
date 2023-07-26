@@ -357,14 +357,16 @@ offset_bottom = 92.0
 script = ExtResource("4_1dme2")
 
 [node name="ColorRect" type="ColorRect" parent="MusicBars"]
+visible = false
 layout_mode = 0
 offset_left = -2.0
-offset_top = 390.0
+offset_top = 386.0
 offset_right = 521.0
-offset_bottom = 430.0
+offset_bottom = 426.0
 color = Color(0.113725, 0.113725, 0.113725, 1)
 
 [node name="Collector" type="Control" parent="MusicBars"]
+visible = false
 anchors_preset = 0
 
 [node name="LeftGroup" type="Control" parent="MusicBars/Collector"]

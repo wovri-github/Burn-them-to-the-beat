@@ -12,6 +12,7 @@ func _ready():
 	
 
 func show_left_group():
+	$ColorRect.show()
 	$Collector/LeftGroup.show()
 func show_right_group():
 	$Collector/RightGroup.show()

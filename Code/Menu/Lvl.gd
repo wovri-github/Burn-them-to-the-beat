@@ -4,7 +4,7 @@ var main_tscn = preload("res://Code/Main/main.tscn")
 
 func start_game(lvl_mode):
 	var main_inst = main_tscn.instantiate()
-	main_inst.init(lvl_mode)
+	main_inst.set_mode(lvl_mode)
 	get_tree().get_root().add_child(main_inst)
 	#get_tree().change_scene_to_packed(main_tscn)
 	queue_free()

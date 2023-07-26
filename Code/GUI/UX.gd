@@ -15,6 +15,8 @@ var _factor_total: int
 var _beat_multiplier: int
 var was_info = false
 
+var is_factor_first_time = true
+
 
 
 func _ready():
@@ -50,10 +52,15 @@ func change_sequence():
 
 
 func _on_new_factor_sum(value):
+	
 	if value == 11:
 		FactorText.set_text("[x11] (MAX)")
 	else:
 		FactorText.set_text("[x" + str(value)+"]")
+	
+	if is_factor_first_time:
+		is_factor_first_time = false
+		$Factor.show()
 #	if not was_info and value == 1: 
 #		was_info = true
 #		$Info.text = "Click for points!"

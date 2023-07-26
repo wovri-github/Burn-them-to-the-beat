@@ -6,6 +6,7 @@ var no_one_burned = true
 @onready var fires_sprites = $Sprites.get_children()
 
 
+
 func _ready():
 	for sprite in fires_sprites:
 		sprite.set_scale(Vector2.ONE)

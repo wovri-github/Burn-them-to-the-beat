@@ -2,6 +2,7 @@ extends Control
 
 var actual_score: int = 0
 const floating_difference_tscn = preload("res://Code/GUI/Score/score_difference.tscn")
+var is_scored_first_time = true
 @onready var score_label = %ScoreLabel
 @onready var score_value_label = %ScoreValue
 @onready var floating_container = $FloatingContainer
@@ -12,10 +13,14 @@ func _ready():
 
 
 func update_score(score):
+	
 	var color = Color.WHITE
 	var difference = score - actual_score
 	if difference > 0:
 		color = Color.GREEN_YELLOW
+		if is_scored_first_time:
+			is_scored_first_time = false
+			self.show()
 	elif difference < 0:
 		color = Color.FIREBRICK
 	

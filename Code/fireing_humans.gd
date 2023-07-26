@@ -20,7 +20,7 @@ func spawn_logick(_beat):
 	if _beat == 1:
 		active_measures = [3]
 	if _beat == 8:
-		active_measures = [1,2]
+		active_measures = [1,2,3]
 	if _beat == 16:
 		random_measures()
 	if _beat == 24:

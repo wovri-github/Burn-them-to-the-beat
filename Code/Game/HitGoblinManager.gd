@@ -17,7 +17,8 @@ var right_on = false
 
 
 func _ready():
-	GameEvents.beat.connect(_on_beat)
+	if not Engine.is_editor_hint():
+		GameEvents.beat.connect(_on_beat)
 
 
 func _on_beat(_song_position_in_beats: int, _measure: int, tempo: int):

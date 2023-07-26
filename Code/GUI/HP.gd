@@ -2,6 +2,7 @@ extends PanelContainer
 
 const MAX_HP = Defaluts.MAX_HP
 const HEART_TSCN = preload("res://Code/GUI/Heart.tscn")
+var is_first_time = true
 @onready var hearths: Array = $HBoxContainer.get_children()
 
 
@@ -33,3 +34,7 @@ func set_hp(hp):
 
 func _on_hp_changed(hp):
 	set_hp(hp)
+	if is_first_time:
+		is_first_time = false
+		show()
+	
