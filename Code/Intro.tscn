@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://b7bk0742oexk0"]
+[gd_scene load_steps=65 format=3 uid="uid://b7bk0742oexk0"]
 
 [ext_resource type="Script" path="res://Code/Intro.gd" id="1_fkgm3"]
 [ext_resource type="PackedScene" uid="uid://blshd046rs1xp" path="res://Code/Main/background.tscn" id="1_sgmtc"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dkour2dh7ebam" path="res://Code/Player.tscn" id="7_iqf0i"]
 [ext_resource type="PackedScene" uid="uid://civnl2k2morb6" path="res://Code/human.tscn" id="8_cvnda"]
 [ext_resource type="Texture2D" uid="uid://cye4gy8yieujf" path="res://Assets/DialougeBOX.png" id="8_mhi2f"]
+[ext_resource type="PackedScene" uid="uid://blylxnu1biq5n" path="res://Code/shake_c.tscn" id="10_qt2c8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_42jvc"]
 atlas = ExtResource("2_eg6u4")
@@ -750,6 +751,9 @@ one_shot = true
 [node name="Human" parent="." instance=ExtResource("8_cvnda")]
 visible = false
 position = Vector2(539, 391)
+
+[node name="ShakeC" parent="." node_paths=PackedStringArray("node_to_shake") instance=ExtResource("10_qt2c8")]
+node_to_shake = NodePath("..")
 
 [connection signal="frame_changed" from="Minotaur" to="." method="_on_minotaur_frame_changed"]
 [connection signal="timeout" from="MarianTextBox/QuickTextTimer" to="MarianTextBox" method="_on_quick_text_timer_timeout"]
