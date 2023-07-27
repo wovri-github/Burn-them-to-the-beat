@@ -6,7 +6,7 @@ signal flamed(_is_human_burned: bool)
 var human_tscn = preload("res://Code/human.tscn")
 var active_measures: Array = []
 @onready var distance = ($HumanSpawn.position.x - $Fire.position.x) 
-@onready var speed = distance / 1.142857143
+@onready var speed = distance / (Defaluts.BEAT_OFFSET * Defaluts.BEAT_SEC)
 
 func _ready():
 	GameEvents.beat.connect(_on_beat)

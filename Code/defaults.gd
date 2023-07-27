@@ -5,3 +5,6 @@ enum MODE{STORY, ENDLESS}
 const FIRE_TIME_SEC = 0.12
 const MAX_HP = 10
 const STARTING_HP = 10
+const BEAT_OFFSET = 4
+const BEAT_SEC = 0.571429
+

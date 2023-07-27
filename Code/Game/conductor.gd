@@ -21,7 +21,7 @@ var _prev_tick = 0
 
 
 func _ready():
-	play_with_beat_offset(3)
+	play_with_beat_offset(Defaluts.BEAT_OFFSET + 1)
 	#play_from_beat(86)
 
 func start_music():
