@@ -10,6 +10,7 @@ var is_scored_first_time = true
 
 func _ready():
 	GameEvents.scored.connect(update_score)
+	self.set_modulate(Color.TRANSPARENT)
 
 
 func update_score(score):
@@ -20,7 +21,7 @@ func update_score(score):
 		color = Color.GREEN_YELLOW
 		if is_scored_first_time:
 			is_scored_first_time = false
-			self.show()
+			self.set_modulate(Color.WHITE)
 	elif difference < 0:
 		color = Color.FIREBRICK
 	

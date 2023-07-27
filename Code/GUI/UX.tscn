@@ -107,7 +107,6 @@ theme_type_variation = &"BlackButton"
 text = "Pause"
 
 [node name="ScoreManager" parent="." instance=ExtResource("6_ga4g5")]
-visible = false
 layout_mode = 1
 offset_top = -152.0
 offset_bottom = -152.0
