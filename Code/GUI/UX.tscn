@@ -1,13 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://u4mxkfjd5fnq"]
+[gd_scene load_steps=11 format=3 uid="uid://u4mxkfjd5fnq"]
 
-[ext_resource type="Theme" uid="uid://dfuneucxdd2t" path="res://Assets/DefaultTheme.tres" id="1_kguyx"]
 [ext_resource type="Script" path="res://Code/GUI/UX.gd" id="1_xxrsr"]
 [ext_resource type="PackedScene" uid="uid://cyarsbbwewu6f" path="res://Code/GUI/HPset.tscn" id="2_m08i3"]
 [ext_resource type="Script" path="res://Code/GUI/ProgressBar.gd" id="3_def61"]
 [ext_resource type="Resource" uid="uid://c163liyttkno0" path="res://Code/runtime_data.tres" id="4_73qpb"]
 [ext_resource type="PackedScene" uid="uid://b6aotl7snp7t" path="res://Code/GUI/Score/score_manager.tscn" id="6_ga4g5"]
+[ext_resource type="Theme" uid="uid://bw1isi430gsb0" path="res://Code/Menu/MenuTheme.tres" id="6_isvrs"]
+[ext_resource type="Texture2D" uid="uid://bo1673o5y64k4" path="res://Assets/UI/ui-frames.png" id="7_1ha4l"]
+[ext_resource type="Script" path="res://Code/GUI/PauseMenu.gd" id="7_qlh5y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jd8oq"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_yseme"]
 font_size = 32
 
 [node name="UX" type="Control"]
@@ -17,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_kguyx")
+theme = ExtResource("6_isvrs")
 script = ExtResource("1_xxrsr")
 
 [node name="Counter" type="Label" parent="."]
@@ -86,17 +91,20 @@ value = 50.0
 script = ExtResource("3_def61")
 runtime_data = ExtResource("4_73qpb")
 
-[node name="LeaveB" type="Button" parent="."]
+[node name="Pause" type="Button" parent="."]
+z_index = 15
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
-offset_top = -47.0
-offset_right = 84.0
-offset_bottom = -4.0
+offset_top = -81.0
+offset_right = 129.0
+offset_bottom = -30.0
 grow_vertical = 0
-text = "Leave"
+theme = ExtResource("6_isvrs")
+theme_type_variation = &"BlackButton"
+text = "Pause"
 
 [node name="ScoreManager" parent="." instance=ExtResource("6_ga4g5")]
 visible = false
@@ -104,4 +112,55 @@ layout_mode = 1
 offset_top = -182.0
 offset_bottom = -182.0
 
-[connection signal="pressed" from="LeaveB" to="." method="_on_leave_b_pressed"]
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("7_qlh5y")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PauseMenu"]
+modulate = Color(1, 1, 1, 0.231373)
+offset_left = 123.0
+offset_top = 61.0
+offset_right = 176.0
+offset_bottom = 115.0
+scale = Vector2(5, 5)
+texture = ExtResource("7_1ha4l")
+region_rect = Rect2(32, 0, 32, 32)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Title" type="Label" parent="PauseMenu"]
+offset_left = 88.0
+offset_top = 89.0
+offset_right = 421.0
+offset_bottom = 124.0
+text = "Paused"
+label_settings = SubResource("LabelSettings_yseme")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+offset_left = 167.0
+offset_top = 134.0
+offset_right = 337.0
+offset_bottom = 304.0
+alignment = 1
+
+[node name="Resume" type="Button" parent="PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_type_variation = &"BlackButton"
+theme_override_font_sizes/font_size = 22
+text = "Resume"
+
+[node name="Leave" type="Button" parent="PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_type_variation = &"BlackButton"
+theme_override_font_sizes/font_size = 22
+text = "Leave"
+
+[connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Leave" to="." method="_on_leave_pressed"]

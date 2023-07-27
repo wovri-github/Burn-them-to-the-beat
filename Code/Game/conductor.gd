@@ -1,5 +1,6 @@
 extends AudioStreamPlayer
 
+signal game_over(is_win)
 
 @export var _max_measures: int = self.stream.get_bar_beats()
 @export var _bpm: int = self.stream.get_bpm()
@@ -62,7 +63,7 @@ func _on_finished():
 	_song_position_in_beats = 1
 	_last_reported_beat = 1
 	_measure = 1
-	print("YouWin!")
+	emit_signal("game_over", true)
 
 
 func _on_offset_beat_timer_timeout():

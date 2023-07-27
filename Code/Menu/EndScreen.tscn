@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://nepeykvm5x17"]
+
+[ext_resource type="Script" path="res://Code/Menu/EndScreen.gd" id="2_vls1q"]
+[ext_resource type="Texture2D" uid="uid://bo1673o5y64k4" path="res://Assets/UI/ui-frames.png" id="3_aw6yc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ybbl"]
+font_size = 32
+
+[node name="EndScreen" type="CanvasLayer"]
+script = ExtResource("2_vls1q")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = 58.0
+offset_top = 61.0
+offset_right = 137.0
+offset_bottom = 140.0
+scale = Vector2(5, 5)
+texture = ExtResource("3_aw6yc")
+region_rect = Rect2(32, 0, 32, 32)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Title" type="Label" parent="."]
+offset_left = 88.0
+offset_top = 89.0
+offset_right = 421.0
+offset_bottom = 124.0
+text = "None"
+label_settings = SubResource("LabelSettings_1ybbl")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 167.0
+offset_top = 170.0
+offset_right = 337.0
+offset_bottom = 340.0
+alignment = 1
+
+[node name="Score" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="VBoxContainer/Score"]
+layout_mode = 2
+text = "Score: "
+
+[node name="Value" type="Label" parent="VBoxContainer/Score"]
+layout_mode = 2
+text = "none"
+
+[node name="Time" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="VBoxContainer/Time"]
+layout_mode = 2
+text = "Time:"
+
+[node name="Value" type="Label" parent="VBoxContainer/Time"]
+layout_mode = 2
+text = "000"
+
+[node name="Menu" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 50)
+offset_left = 277.0
+offset_top = 389.0
+offset_right = 446.0
+offset_bottom = 439.0
+theme_type_variation = &"BlackButton"
+text = "Menu"
+
+[node name="PlayEndless" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 50)
+offset_left = 65.0
+offset_top = 385.0
+offset_right = 235.0
+offset_bottom = 435.0
+tooltip_text = "You have to win a game 
+to unlock endless"
+theme_type_variation = &"RedButton"
+disabled = true
+text = "Endless"
+
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="PlayEndless" to="." method="_on_play_endless_pressed"]

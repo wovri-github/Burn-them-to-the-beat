@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://dfuneucxdd2t"]
 
-[ext_resource type="FontFile" uid="uid://cji7f12plvkw7" path="res://Assets/font/Help Alex.ttf" id="1_asbjw"]
+[ext_resource type="FontFile" uid="uid://dk1k8buhdg0iv" path="res://Assets/font/bitfont.ttf" id="1_t058w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fhsc"]
 bg_color = Color(0.619608, 0.596078, 0.552941, 1)
@@ -10,6 +10,6 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [resource]
-default_font = ExtResource("1_asbjw")
+default_font = ExtResource("1_t058w")
 default_font_size = 30
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_2fhsc")

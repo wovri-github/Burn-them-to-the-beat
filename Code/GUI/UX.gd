@@ -1,5 +1,7 @@
 extends Control
 
+signal game_over(is_win)
+
 @onready var sequence = [
 	"Get Ready",
 	"Use Space with rythm",
@@ -10,6 +12,7 @@ extends Control
 @onready var FactorText = $Factor/Label
 @onready var FactorProg = $Factor/ProgressBar
 @onready var score_manager = $ScoreManager
+@onready var pause_menu = $PauseMenu
 var sequence_counter = 0
 var _factor_total: int
 var _beat_multiplier: int
@@ -25,7 +28,8 @@ func _ready():
 #	GameEvents.music_beat.connect(_on_music_bit_timeout)
 	GameEvents.new_factor_sum.connect(_on_new_factor_sum)
 #	GameEvents.setted_beat_multiplier.connect(_on_setted_beat_multiplier)
-	pass
+	pause_menu.hide()
+
 
 
 func _on_hit_made(is_correct, is_left_side):
@@ -69,5 +73,21 @@ func _on_new_factor_sum(value):
 #		$Info.text = ""
 	
 
-func _on_leave_b_pressed():
-	get_tree().change_scene_to_file("res://Code/Menu/EndTable.tscn")
+func _on_pause_pressed():
+	change_pause_menu_state(true)
+
+func _on_resume_pressed():
+	change_pause_menu_state(false)
+
+func change_pause_menu_state(is_on):
+	get_tree().set_pause(is_on)
+	if is_on:
+		pause_menu.show()
+	else:
+		pause_menu.hide()
+	
+
+
+func _on_leave_pressed():
+	get_tree().set_pause(false)
+	emit_signal("game_over", false)

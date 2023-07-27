@@ -648,12 +648,16 @@ z_index = 15
 position = Vector2(238, 445)
 scale = Vector2(2.39583, 2.39583)
 
+[node name="SecTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="flamed" from="FireingHumans" to="." method="_on_fireing_humans_flamed"]
 [connection signal="flamed" from="FireingHumans" to="Story/RandomTextManager" method="_on_fireing_humans_flamed"]
 [connection signal="human_escaped" from="FireingHumans" to="." method="_on_fireing_humans_human_escaped"]
 [connection signal="timeout" from="Story/MainTextBox/QuickTextTimer" to="Story/MainTextBox" method="_on_quick_text_timer_timeout"]
 [connection signal="timeout" from="Story/MarianTextBox/QuickTextTimer" to="Story/MarianTextBox" method="_on_quick_text_timer_timeout"]
 [connection signal="timeout" from="Story/AdamTextBox2/QuickTextTimer" to="Story/AdamTextBox2" method="_on_quick_text_timer_timeout"]
+[connection signal="timeout" from="SecTimer" to="." method="_on_sec_timer_timeout"]
 
 [editable path="DanceManager/DancingGoblins/DancingGoblin2"]
 [editable path="DanceManager/DancingGoblins/DancingGoblin3"]

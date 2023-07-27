@@ -1,5 +1,7 @@
 extends Node2D
 
+signal game_over(is_win)
+
 const PROGRESS_FACTOR_DEPRECIATION = 75
 const SPACE_ALLOWANCE_MSEC = 100
 const BEAT_TIME_MSEC = 571
@@ -16,6 +18,7 @@ var _factor_sum: int = 1:
 var _disable_points = false
 var _beat_multiplier: int = 0
 var score = 0
+var game_time = 0
 var hp = Defaluts.STARTING_HP
 
 
@@ -81,7 +84,7 @@ func lose_hp():
 	hp -= 1
 	if hp <= 0:
 		hp = 0
-		print("GameOver")
+		emit_signal("game_over", false)
 	GameEvents.emit_signal("hp_changed", hp)
 
 
@@ -98,3 +101,7 @@ func _on_hit_made(is_correct, is_left_side):
 func _on_story_show_left_side():
 	$HitGoblinManager.left_on = true
 	$MusicBars.show_left_group()
+
+
+func _on_sec_timer_timeout():
+	game_time += 1
