@@ -59,6 +59,7 @@ func play_with_beat_offset(num):
 
 
 func _on_finished():
+	await get_tree().create_timer(2).timeout
 	_tempo = 0
 	_song_position_in_beats = 1
 	_last_reported_beat = 1
