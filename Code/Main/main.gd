@@ -25,9 +25,9 @@ func set_mode(lvl_mode):
 	match lvl_mode:
 		Defaluts.MODE.STORY:
 			pass
-		Defaluts.LVL.HARD:
-			$Game/HitGoblinManager.queue_free()
-			$Game/Story.queue_free()
+		Defaluts.MODE.ENDLESS:
+			game_inst.turn_on_endless_mode()
+			conductor_inst.is_endless = true
 
 func play_game():
 	intro_inst.queue_free()

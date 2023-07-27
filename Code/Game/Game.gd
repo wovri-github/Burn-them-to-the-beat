@@ -19,6 +19,7 @@ var _disable_points = false
 var _beat_multiplier: int = 0
 var score = 0
 var game_time = 0
+var is_endless = false
 var hp = Defaluts.STARTING_HP
 
 
@@ -86,6 +87,17 @@ func lose_hp():
 		hp = 0
 		emit_signal("game_over", false)
 	GameEvents.emit_signal("hp_changed", hp)
+
+func turn_on_endless_mode():
+	is_endless = true
+	$HitGoblinManager.left_on = true
+	$MusicBars.show_left_group()
+	$HitGoblinManager.right_on = true
+	$MusicBars.show_right_group()
+	$HitGoblinManager.change_goblin_visibility(true)
+	
+	
+	
 
 
 func _on_fireing_humans_flamed(_is_human_burned):

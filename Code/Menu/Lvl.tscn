@@ -43,29 +43,19 @@ offset_top = 170.0
 offset_right = 337.0
 offset_bottom = 340.0
 
-[node name="NormalB" type="Button" parent="VBoxContainer"]
+[node name="Story" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_type_variation = &"GreenButton"
 text = "Story"
 
-[node name="HardB" type="Button" parent="VBoxContainer"]
-visible = false
+[node name="Endless" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_type_variation = &"OrangeButton"
-disabled = true
-text = "Hard"
-
-[node name="ExtremeB" type="Button" parent="VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-tooltip_text = "Real game plot"
+tooltip_text = "You have to win a game 
+to unlock endless"
 theme_type_variation = &"RedButton"
-disabled = true
-text = "Extreme "
+text = "Endless"
 
-[connection signal="pressed" from="VBoxContainer/NormalB" to="." method="_on_normal_b_pressed"]
-[connection signal="pressed" from="VBoxContainer/HardB" to="." method="_on_hard_b_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExtremeB" to="." method="_on_extreme_b_pressed"]
+[connection signal="pressed" from="VBoxContainer/Story" to="." method="_on_normal_b_pressed"]
+[connection signal="pressed" from="VBoxContainer/Endless" to="." method="_on_endless_pressed"]

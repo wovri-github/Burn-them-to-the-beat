@@ -8,8 +8,9 @@ var starting_second_story_beat: int = -1
 
 
 func _ready():
-	GameEvents.beat.connect(_on_beat)
-	GameEvents.hit_made.connect(_on_hit_made)
+	if not get_parent().is_endless:
+		GameEvents.beat.connect(_on_beat)
+		GameEvents.hit_made.connect(_on_hit_made)
 
 
 func story(_beat):

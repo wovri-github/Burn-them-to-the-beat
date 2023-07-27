@@ -13,6 +13,7 @@ var _tempo := 0
 var _beats_before_start = 0
 var time_begin
 var time_delay
+var is_endless = false
 
 var _prev_tick = 0
 
@@ -64,7 +65,10 @@ func _on_finished():
 	_song_position_in_beats = 1
 	_last_reported_beat = 1
 	_measure = 1
-	emit_signal("game_over", true)
+	if not is_endless:
+		emit_signal("game_over", true)
+	else:
+		play_with_beat_offset(Defaluts.BEAT_OFFSET + 1)
 
 
 func _on_offset_beat_timer_timeout():
