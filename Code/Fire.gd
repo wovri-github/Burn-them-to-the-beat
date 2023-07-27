@@ -3,14 +3,18 @@ extends Area2D
 
 @export var flame_big_scale: float = 3
 var no_one_burned = true
+var is_blue = false
 @onready var fires_sprites = $Sprites.get_children()
 
 
 
 func _ready():
+	GameEvents.new_factor_sum.connect(_on_new_factor_sum)
 	for sprite in fires_sprites:
 		sprite.set_scale(Vector2.ONE)
 		sprite.play("fire")
+
+
 
 
 func _input(event):
@@ -40,13 +44,18 @@ func burn_human():
 		get_parent().emit_signal("flamed", true)
 
 
+func _on_new_factor_sum(factor_sum):
+	if factor_sum >= 11:
+		is_blue = true
+		for sprite in fires_sprites:
+			sprite.play("bluefire")
+	elif is_blue == true:
+		is_blue = false
+		for sprite in fires_sprites:
+			sprite.play("fire")
+	
+
 func _on_flame_timer_timeout():
 	for sprite in fires_sprites:
 		sprite.set_scale(Vector2.ONE)
 	check_is_someone_burned()
-
-#func _on_area_entered(area):
-#	if not $FlameTimer.is_stopped():
-#		no_one_burned = false
-#		get_parent().emit_signal("flamed", true)
-#		area.die()

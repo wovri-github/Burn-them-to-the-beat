@@ -17,7 +17,7 @@ func _unhandled_input(event):
 		is_in_game = true
 		play_game()
 
-func play_intro():
+func play_intro(): 
 	add_child(intro_inst)
 
 

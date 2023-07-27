@@ -6,4 +6,4 @@
 scale = Vector2(2, 2)
 
 [node name="Goblin" parent="." instance=ExtResource("1_4la5i")]
-modulate = Color(0.85098, 0.85098, 0.85098, 1)
+modulate = Color(0.827451, 0.807843, 0.8, 1)

@@ -19,13 +19,14 @@ func _on_factor_value_change(factor):
 func manage_dancing_goblin(_prev_factor, factor):
 	if factor >= 10:
 		_dancing_goblin_god.show()
-	else:
+	elif factor == 9:
 		_dancing_goblin_god.hide()
+	else:
+		if _prev_factor < factor and factor >= 3:
+			add_random_dancer()
+		elif not _already_dancing_goblins.is_empty():
+			hide_random_dancer()
 
-	if _prev_factor < factor and factor >= 5:
-		add_random_dancer()
-	elif not _already_dancing_goblins.is_empty():
-		hide_random_dancer()
 
 
 func add_random_dancer():

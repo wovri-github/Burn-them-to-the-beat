@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dkour2dh7ebam"]
+[gd_scene load_steps=31 format=3 uid="uid://dkour2dh7ebam"]
 
 [ext_resource type="Texture2D" uid="uid://cflq3nlkin12o" path="res://Assets/ArmourImp.png" id="1_4gvqb"]
+[ext_resource type="Texture2D" uid="uid://byc4sq6u41glb" path="res://Assets/ArmourPsionicGoblin.png" id="2_1cb01"]
 [ext_resource type="Script" path="res://Code/Player.gd" id="2_y53s1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4pl4f"]
@@ -22,6 +23,26 @@ region = Rect2(256, 104, 32, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hydi6"]
 atlas = ExtResource("1_4gvqb")
 region = Rect2(288, 104, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca1np"]
+atlas = ExtResource("2_1cb01")
+region = Rect2(160, 103, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0cfk"]
+atlas = ExtResource("2_1cb01")
+region = Rect2(192, 103, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikgix"]
+atlas = ExtResource("2_1cb01")
+region = Rect2(224, 103, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkcr3"]
+atlas = ExtResource("2_1cb01")
+region = Rect2(256, 103, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whgvk"]
+atlas = ExtResource("2_1cb01")
+region = Rect2(288, 103, 32, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_twacc"]
 atlas = ExtResource("1_4gvqb")
@@ -51,9 +72,41 @@ region = Rect2(64, 72, 32, 24)
 atlas = ExtResource("1_4gvqb")
 region = Rect2(96, 104, 32, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrr1k"]
+atlas = ExtResource("2_1cb01")
+region = Rect2(64, 7, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhgcr"]
+atlas = ExtResource("2_1cb01")
+region = Rect2(64, 39, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_127ld"]
+atlas = ExtResource("2_1cb01")
+region = Rect2(96, 39, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwbwg"]
+atlas = ExtResource("2_1cb01")
+region = Rect2(128, 39, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hjob"]
+atlas = ExtResource("2_1cb01")
+region = Rect2(160, 39, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg64e"]
+atlas = ExtResource("2_1cb01")
+region = Rect2(64, 103, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufgbs"]
+atlas = ExtResource("2_1cb01")
+region = Rect2(64, 71, 32, 25)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_20g6f"]
 atlas = ExtResource("1_4gvqb")
 region = Rect2(0, 8, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pp4b"]
+atlas = ExtResource("2_1cb01")
+region = Rect2(0, 7, 32, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8bi0v"]
 animations = [{
@@ -75,6 +128,26 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca1np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0cfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikgix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkcr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whgvk")
+}],
+"loop": false,
+"name": &"attack_blue",
 "speed": 20.0
 }, {
 "frames": [{
@@ -105,10 +178,44 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wrr1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhgcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_127ld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwbwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hjob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xg64e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufgbs")
+}],
+"loop": true,
+"name": &"dance_blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_20g6f")
 }],
 "loop": false,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pp4b")
+}],
+"loop": true,
+"name": &"default_blue",
 "speed": 5.0
 }]
 
