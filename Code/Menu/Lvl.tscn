@@ -55,6 +55,7 @@ layout_mode = 2
 tooltip_text = "You have to win a game 
 to unlock endless"
 theme_type_variation = &"RedButton"
+disabled = true
 text = "Endless"
 
 [connection signal="pressed" from="VBoxContainer/Story" to="." method="_on_normal_b_pressed"]

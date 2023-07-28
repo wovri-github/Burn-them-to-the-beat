@@ -66,6 +66,8 @@ func _on_finished():
 	_last_reported_beat = 1
 	_measure = 1
 	if not is_endless:
+		Storage.set_value("state", "activate_endless_mode", true)
+		Storage.save()
 		emit_signal("game_over", true)
 	else:
 		play_with_beat_offset(Defaluts.BEAT_OFFSET + 1)

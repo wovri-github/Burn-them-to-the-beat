@@ -1,7 +1,7 @@
 [gd_scene load_steps=84 format=3 uid="uid://h80ckumhkhx1"]
 
 [ext_resource type="Script" path="res://Code/Game/Game.gd" id="1_y51tq"]
-[ext_resource type="Resource" uid="uid://c163liyttkno0" path="res://Code/runtime_data.tres" id="2_kjf7b"]
+[ext_resource type="Resource" uid="uid://csj5lqc01kr7j" path="res://Code/runtime_data.tres" id="2_kjf7b"]
 [ext_resource type="PackedScene" uid="uid://blshd046rs1xp" path="res://Code/Main/background.tscn" id="3_m7pa7"]
 [ext_resource type="Script" path="res://Code/Game/MusicBars.gd" id="4_1dme2"]
 [ext_resource type="PackedScene" uid="uid://cp6p3evs6p373" path="res://hit_goblin_manager.tscn" id="4_w6fj2"]

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://du0c3hnd5816g" path="res://Assets/Humans.png" id="1_8pe76"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wi7fj"]
-size = Vector2(20, 35.9268)
+size = Vector2(26, 35.9268)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ysnwx"]
 polygon = PackedVector2Array(-10, 1, 10, 1, 10, -7, -10, -7)
