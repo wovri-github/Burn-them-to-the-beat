@@ -9,7 +9,8 @@ var is_first_time = true
 
 func _ready():
 	GameEvents.hp_changed.connect(_on_hp_changed)
-	set_hp(Defaluts.STARTING_HP)
+	set_hp(4)
+	#set_hp(Defaluts.STARTING_HP)
 
 func set_health_bar():
 	var number_of_hearts = round(MAX_HP / 2.0)
@@ -21,7 +22,14 @@ func set_health_bar():
 
 func set_hp(hp):
 	var hp_pool = hp
-	for heart in hearths:
+	
+	
+	var i = 0
+	while true:
+		if hearths.size() <= i:
+			break
+		var heart = hearths[i]
+		i += 1
 		if hp_pool == 0:
 			heart.set_hp(0)
 			break
@@ -38,3 +46,9 @@ func _on_hp_changed(hp):
 		is_first_time = false
 		show()
 	
+
+var decrease_hp = 4
+func _on_button_pressed():
+	decrease_hp -= 1
+	_on_hp_changed(decrease_hp)
+	#_on_hp_changed(7)

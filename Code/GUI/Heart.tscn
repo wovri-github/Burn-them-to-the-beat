@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bycawr0huid1r"]
+[gd_scene load_steps=7 format=3 uid="uid://bycawr0huid1r"]
 
+[ext_resource type="Script" path="res://Code/GUI/tremble.gd" id="2_ypyxs"]
 [ext_resource type="Script" path="res://Code/GUI/Heart.gd" id="4_wfydw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cp8j8"]
@@ -51,3 +52,6 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AnimatedTexture_eqhnw")
+
+[node name="Tremble" type="Node" parent="."]
+script = ExtResource("2_ypyxs")

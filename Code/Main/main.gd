@@ -5,10 +5,25 @@ var game_inst = preload("res://Code/Game/Game.tscn").instantiate()
 var ux_inst = preload("res://Code/GUI/UX.tscn").instantiate()
 var conductor_inst = preload("res://Code/Game/conductor.tscn").instantiate()
 var end_screen_inst = preload("res://Code/Menu/EndScreen.tscn").instantiate()
+var lvl_mode = null
 var is_in_game = false
 
 
+
+func set_mode(_lvl_mode):
+	lvl_mode = _lvl_mode
+	match lvl_mode:
+		Defaluts.MODE.STORY:
+			pass
+		Defaluts.MODE.ENDLESS:
+			game_inst.turn_on_endless_mode()
+			conductor_inst.is_endless = true
+
 func _ready(): 
+	if lvl_mode == Defaluts.MODE.ENDLESS:
+		is_in_game = true
+		play_game()
+		return
 	play_intro()
 
 func _unhandled_input(event):
@@ -20,13 +35,6 @@ func play_intro():
 	add_child(intro_inst)
 
 
-func set_mode(lvl_mode):
-	match lvl_mode:
-		Defaluts.MODE.STORY:
-			pass
-		Defaluts.MODE.ENDLESS:
-			game_inst.turn_on_endless_mode()
-			conductor_inst.is_endless = true
 
 func play_game():
 	intro_inst.queue_free()

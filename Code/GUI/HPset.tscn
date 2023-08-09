@@ -32,3 +32,14 @@ layout_mode = 2
 
 [node name="Heart5" parent="HBoxContainer" instance=ExtResource("1_22unb")]
 layout_mode = 2
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Button" type="Button" parent="Node"]
+offset_left = 75.0
+offset_top = 41.0
+offset_right = 124.0
+offset_bottom = 65.0
+text = "-1 hp"
+
+[connection signal="pressed" from="Node/Button" to="." method="_on_button_pressed"]

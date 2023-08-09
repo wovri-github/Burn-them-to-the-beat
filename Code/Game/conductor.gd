@@ -20,6 +20,7 @@ var offset_sec = 0
 var ideal_beat_time = (60.0/105.0)
 var beat = 1
 
+var total_beat = 256
 var _prev_tick = 0
 
 @onready var offset_beat_timer = $OffsetBeatTimer
@@ -28,13 +29,13 @@ var _prev_tick = 0
 
 func _ready():
 	play_with_beat_offset(Defaluts.BEAT_OFFSET)
-	#play_from_beat(86)
+	#play_from_beat(240)
 
 func _process(delta):
 	if self.is_playing():
 		var song_position = get_playback_position() + AudioServer.get_time_since_last_mix() - AudioServer.get_output_latency()
 		offset_sec = song_position - ideal_beat_time
-		if offset_sec >= 0:
+		if offset_sec >= 0 and beat < total_beat - Defaluts.BEAT_OFFSET:
 			report_beat()
 
 func report_beat():
@@ -65,8 +66,7 @@ func _on_finished():
 		Storage.save()
 		emit_signal("game_over", true)
 	else:
-		await get_tree().create_timer(1).timeout
-		self.pitch_scale += pitch_increment
+		#self.pitch_scale += pitch_increment
 		play_with_beat_offset(Defaluts.BEAT_OFFSET)
 
 
