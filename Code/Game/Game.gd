@@ -70,13 +70,14 @@ func _on_new_boxes_number_picked(left: int, right: int):
 	_current_right_number = right
 
 
-func points_logic(_is_human_burned):
+func points_logic(burned_humans):
 	if _disable_points:
 		return
-	if _is_human_burned:
-		score += 1 * _factor_sum
-	else:
+	
+	if burned_humans == 0:
 		score -= 1 * _factor_sum
+	else:
+		score += burned_humans * _factor_sum
 		if score <= 0:
 			score = 0
 	GameEvents.emit_signal("scored", score)
@@ -90,6 +91,7 @@ func lose_hp():
 
 func turn_on_endless_mode():
 	is_endless = true
+	$FireingHumans.is_endless = true
 	$HitGoblinManager.left_on = true
 	$MusicBars.show_left_group()
 	$HitGoblinManager.right_on = true
@@ -100,8 +102,8 @@ func turn_on_endless_mode():
 	
 
 
-func _on_fireing_humans_flamed(_is_human_burned):
-	points_logic(_is_human_burned)
+func _on_fireing_humans_flamed(burned_humans: int):
+	points_logic(burned_humans)
 
 func _on_fireing_humans_human_escaped():
 	lose_hp()

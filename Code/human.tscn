@@ -28,3 +28,5 @@ shape = SubResource("RectangleShape2D_wi7fj")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_ysnwx")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

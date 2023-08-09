@@ -14,6 +14,11 @@ var _beats_before_start = 0
 var time_begin
 var time_delay
 var is_endless = false
+var pitch_increment = 0.02
+
+var offset_sec = 0
+var ideal_beat_time = (60.0/105.0)
+var beat = 1
 
 var _prev_tick = 0
 
@@ -22,31 +27,21 @@ var _prev_tick = 0
 
 
 func _ready():
-	play_with_beat_offset(Defaluts.BEAT_OFFSET + 1)
+	play_with_beat_offset(Defaluts.BEAT_OFFSET)
 	#play_from_beat(86)
-
-func start_music():
-	time_begin = Time.get_ticks_usec()
-	time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
-	self.play()
 
 func _process(delta):
 	if self.is_playing():
-		var song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
-		song_position -= AudioServer.get_output_latency()
-		_song_position_in_beats = int(floor(song_position / _sec_per_beat)) + _beats_before_start
-		report_beat()
+		var song_position = get_playback_position() + AudioServer.get_time_since_last_mix() - AudioServer.get_output_latency()
+		offset_sec = song_position - ideal_beat_time
+		if offset_sec >= 0:
+			report_beat()
 
 func report_beat():
-	if _last_reported_beat < _song_position_in_beats:
-		_measure = (_last_reported_beat % _max_measures) +1
-		_last_reported_beat = _song_position_in_beats
-#		tempo_logick(_song_position_in_beats)
-		GameEvents.emit_signal("beat", _song_position_in_beats, _measure, _tempo)
-#		print("Beat: " + str(_song_position_in_beats)\
-#				 + " Measure: " + str(_measure)\
-#				 + " Time diff: " + str(Time.get_ticks_msec() - _prev_tick))
-		_prev_tick = Time.get_ticks_msec()
+	_measure = (beat % _max_measures) + 1
+	beat += 1
+	ideal_beat_time = (beat - Defaluts.BEAT_OFFSET) * (60.0/105.0)
+	GameEvents.emit_signal("beat", beat, _measure, offset_sec)
 
 func play_from_beat(beat):
 	play()
@@ -70,7 +65,9 @@ func _on_finished():
 		Storage.save()
 		emit_signal("game_over", true)
 	else:
-		play_with_beat_offset(Defaluts.BEAT_OFFSET + 1)
+		await get_tree().create_timer(1).timeout
+		self.pitch_scale += pitch_increment
+		play_with_beat_offset(Defaluts.BEAT_OFFSET)
 
 
 func _on_offset_beat_timer_timeout():

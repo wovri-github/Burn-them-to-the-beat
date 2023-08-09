@@ -17,7 +17,7 @@ func game_over(is_win):
 func _ready():
 	var activate_endless_mode = Storage.get_value("state", "activate_endless_mode", false)
 	if activate_endless_mode == true:
-		$VBoxContainer/Endless.disabled = false
+		$PlayEndless.disabled = false
 	score_label_value.text = str(score)
 	time_label_value.text = str(game_time)
 

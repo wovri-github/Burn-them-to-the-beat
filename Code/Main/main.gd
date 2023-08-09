@@ -6,11 +6,9 @@ var ux_inst = preload("res://Code/GUI/UX.tscn").instantiate()
 var conductor_inst = preload("res://Code/Game/conductor.tscn").instantiate()
 var end_screen_inst = preload("res://Code/Menu/EndScreen.tscn").instantiate()
 var is_in_game = false
-#var factor_progress = load("res://Code/runtime_data.tres")
-var factor_progress1 = load("res://new_resource.tres")
 
 
-func _ready():
+func _ready(): 
 	play_intro()
 
 func _unhandled_input(event):
