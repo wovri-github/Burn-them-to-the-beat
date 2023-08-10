@@ -11,11 +11,11 @@ func _ready():
 	if not get_parent().is_endless:
 		GameEvents.beat.connect(_on_beat)
 		GameEvents.hit_made.connect(_on_hit_made)
+	await get_tree().create_timer(0.5714).timeout
+	self.play("Story1")
 
 
 func story(_beat):
-	if _beat == 1:
-		self.play("Story1")
 	if _beat == 90:
 		self.play("Story2")
 	if _beat == starting_second_story_beat:

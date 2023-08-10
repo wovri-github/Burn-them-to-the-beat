@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1ko3qjnm8k4b"]
+
+[ext_resource type="Texture2D" uid="uid://b0stvtu3m38s4" path="res://Assets/Background/Lever.png" id="1_l624w"]
+[ext_resource type="Script" path="res://Code/Game/Background/lever.gd" id="2_54jx6"]
+
+[node name="Lever" type="Sprite2D"]
+z_index = 20
+texture = ExtResource("1_l624w")
+offset = Vector2(0, -6)
+hframes = 3
+frame = 1
+script = ExtResource("2_54jx6")
+
+[node name="TurnOff" type="Timer" parent="."]
+
+[connection signal="timeout" from="TurnOff" to="." method="_on_turn_off_timeout"]

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1i8riuq7q1fo"]
-
-[ext_resource type="Script" path="res://Code/Game/Game.gd" id="1_ba3mw"]
-[ext_resource type="PackedScene" uid="uid://bjq88vs4wuxwq" path="res://Code/fireing_humans.tscn" id="2_gvnjp"]
-
-[node name="NormalGame" type="Node2D"]
-script = ExtResource("1_ba3mw")
-
-[node name="FireingHumans" parent="." instance=ExtResource("2_gvnjp")]

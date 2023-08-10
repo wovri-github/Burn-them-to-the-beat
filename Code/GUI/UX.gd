@@ -27,7 +27,6 @@ func _ready():
 #	change_sequence()
 #	GameEvents.music_beat.connect(_on_music_bit_timeout)
 	GameEvents.new_factor_sum.connect(_on_new_factor_sum)
-#	GameEvents.setted_beat_multiplier.connect(_on_setted_beat_multiplier)
 	pause_menu.hide()
 
 
@@ -37,13 +36,6 @@ func _on_hit_made(is_correct, is_left_side):
 		is_factor_first_time = false
 		$Factor.show()
 
-func _on_setted_beat_multiplier(multiplier):
-	if multiplier == 0:
-		_beat_multiplier = 0
-	elif multiplier == 1:
-		_beat_multiplier = 1
-	elif multiplier == 2:
-		_beat_multiplier = 10
 
 func _on_music_bit_timeout(beat):
 	pass

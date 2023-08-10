@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Code/GUI/UX.gd" id="1_xxrsr"]
 [ext_resource type="PackedScene" uid="uid://cyarsbbwewu6f" path="res://Code/GUI/HPset.tscn" id="2_m08i3"]
 [ext_resource type="Script" path="res://Code/GUI/ProgressBar.gd" id="3_def61"]
-[ext_resource type="Resource" uid="uid://csj5lqc01kr7j" path="res://Code/runtime_data.tres" id="4_73qpb"]
+[ext_resource type="Resource" uid="uid://csj5lqc01kr7j" path="res://Code/Components/runtime_data.tres" id="4_73qpb"]
 [ext_resource type="PackedScene" uid="uid://b6aotl7snp7t" path="res://Code/GUI/Score/score_manager.tscn" id="6_ga4g5"]
 [ext_resource type="Theme" uid="uid://bw1isi430gsb0" path="res://Code/Menu/MenuTheme.tres" id="6_isvrs"]
 [ext_resource type="Texture2D" uid="uid://bo1673o5y64k4" path="res://Assets/UI/ui-frames.png" id="7_1ha4l"]

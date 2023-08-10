@@ -19,7 +19,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameEvents="*res://Code/Singletones/GameEvents.tscn"
-Storage="*res://storage.gd"
+Storage="*res://Code/Singletones/storage.gd"
+GlobalVaribles="*res://Code/Singletones/global_varibles.gd"
 
 [display]
 
@@ -27,6 +28,10 @@ window/size/viewport_width=512
 window/size/viewport_height=512
 window/size/initial_screen=2
 window/stretch/mode="viewport"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [gui]
 
@@ -60,8 +65,7 @@ common/physics_ticks_per_second=120
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="gl_compatibility"
-textures/default_filters/use_nearest_mipmap_filter=true
+renderer/rendering_method="mobile"
 environment/defaults/default_clear_color=Color(0.0980392, 0.0980392, 0.0980392, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

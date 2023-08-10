@@ -13,6 +13,7 @@ var _tempo := 0
 var _beats_before_start = 0
 var time_begin
 var time_delay
+
 var is_endless = false
 var pitch_increment = 0.02
 
@@ -28,8 +29,10 @@ var _prev_tick = 0
 
 
 func _ready():
+	if GlobalVaribles.game_mode == Defaluts.MODE.ENDLESS:
+		is_endless = true
 	play_with_beat_offset(Defaluts.BEAT_OFFSET)
-	#play_from_beat(240)
+	#play_from_beat(180)
 
 func _process(delta):
 	if self.is_playing():
@@ -58,6 +61,7 @@ func play_with_beat_offset(num):
 func _on_finished():
 	await get_tree().create_timer(2).timeout
 	_tempo = 0
+	beat = 1
 	_song_position_in_beats = 1
 	_last_reported_beat = 1
 	_measure = 1

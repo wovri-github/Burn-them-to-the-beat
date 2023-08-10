@@ -14,7 +14,6 @@ func _ready():
 
 
 func update_score(score):
-	
 	var color = Color.WHITE
 	var difference = score - actual_score
 	if difference > 0:

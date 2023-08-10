@@ -1,25 +1,26 @@
-[gd_scene load_steps=84 format=3 uid="uid://h80ckumhkhx1"]
+[gd_scene load_steps=85 format=3 uid="uid://h80ckumhkhx1"]
 
 [ext_resource type="Script" path="res://Code/Game/Game.gd" id="1_y51tq"]
-[ext_resource type="Resource" uid="uid://csj5lqc01kr7j" path="res://Code/runtime_data.tres" id="2_kjf7b"]
-[ext_resource type="PackedScene" uid="uid://blshd046rs1xp" path="res://Code/Main/background.tscn" id="3_m7pa7"]
-[ext_resource type="Script" path="res://Code/Game/MusicBars.gd" id="4_1dme2"]
-[ext_resource type="PackedScene" uid="uid://cp6p3evs6p373" path="res://hit_goblin_manager.tscn" id="4_w6fj2"]
-[ext_resource type="PackedScene" uid="uid://d8ys1h6r0d4t" path="res://Code/SpaceEffect/BlockGroup.tscn" id="5_qe3rx"]
-[ext_resource type="Script" path="res://Code/Game/DanceManager.gd" id="6_fkh8t"]
-[ext_resource type="PackedScene" uid="uid://482qvsvj2xx2" path="res://Code/DancingGoblin.tscn" id="6_jjuxq"]
+[ext_resource type="Resource" uid="uid://csj5lqc01kr7j" path="res://Code/Components/runtime_data.tres" id="2_hfc1o"]
+[ext_resource type="PackedScene" uid="uid://c8sc32qujvias" path="res://Code/Game/Hitting/music_bars.tscn" id="3_32ov7"]
+[ext_resource type="PackedScene" uid="uid://blshd046rs1xp" path="res://Code/Game/Background/background.tscn" id="3_m7pa7"]
+[ext_resource type="PackedScene" uid="uid://cp6p3evs6p373" path="res://Code/Game/Hitting/hit_goblin_manager.tscn" id="6_3cuvr"]
+[ext_resource type="Script" path="res://Code/Game/Dance/DanceManager.gd" id="6_fkh8t"]
+[ext_resource type="PackedScene" uid="uid://482qvsvj2xx2" path="res://Code/Game/Dance/DancingGoblin.tscn" id="6_jjuxq"]
+[ext_resource type="Script" path="res://Code/Game/TextBox.gd" id="10_hqo1e"]
 [ext_resource type="Script" path="res://Code/Game/story.gd" id="11_rnb1c"]
-[ext_resource type="Texture2D" uid="uid://cye4gy8yieujf" path="res://Assets/DialougeBOX.png" id="12_2ymm5"]
+[ext_resource type="Texture2D" uid="uid://cye4gy8yieujf" path="res://Assets/Game/DialougeBOX.png" id="12_2ymm5"]
 [ext_resource type="Script" path="res://Code/Game/RandomTextManager.gd" id="13_iurd3"]
-[ext_resource type="Script" path="res://TextBox.gd" id="13_p8gi1"]
-[ext_resource type="PackedScene" uid="uid://bjq88vs4wuxwq" path="res://Code/fireing_humans.tscn" id="14_cyj3i"]
-[ext_resource type="Resource" uid="uid://15xuf645t7vj" path="res://Code/random_happy_dialogs.tres" id="14_g2vek"]
-[ext_resource type="Texture2D" uid="uid://baqfjsqpno6w6" path="res://Assets/DialougeBOXFlip.png" id="14_xwtnl"]
-[ext_resource type="PackedScene" uid="uid://dkour2dh7ebam" path="res://Code/Player.tscn" id="16_asalf"]
+[ext_resource type="PackedScene" uid="uid://bjq88vs4wuxwq" path="res://Code/Game/Fireing/fireing_humans.tscn" id="14_cyj3i"]
+[ext_resource type="Texture2D" uid="uid://baqfjsqpno6w6" path="res://Assets/Game/DialougeBOXFlip.png" id="14_xwtnl"]
+[ext_resource type="PackedScene" uid="uid://dkour2dh7ebam" path="res://Code/Entities/goblin.tscn" id="16_asalf"]
 [ext_resource type="FontFile" uid="uid://dk1k8buhdg0iv" path="res://Assets/font/bitfont.ttf" id="16_o6cia"]
-[ext_resource type="Texture2D" uid="uid://nmrvtlqvygqq" path="res://Assets/RedMinotaur.png" id="17_73rje"]
-[ext_resource type="Texture2D" uid="uid://cu3vjciiscdij" path="res://Assets/GreyMinotaur.png" id="18_n6jka"]
-[ext_resource type="Script" path="res://Code/Player.gd" id="18_wkves"]
+[ext_resource type="Texture2D" uid="uid://nmrvtlqvygqq" path="res://Assets/Game/RedMinotaur.png" id="17_73rje"]
+[ext_resource type="Texture2D" uid="uid://cu3vjciiscdij" path="res://Assets/Game/GreyMinotaur.png" id="18_n6jka"]
+[ext_resource type="Script" path="res://Code/Entities/goblin.gd" id="18_wkves"]
+[ext_resource type="Script" path="res://Code/Game/factor_calculator.gd" id="21_h6pr3"]
+[ext_resource type="Script" path="res://Code/Game/score_calculator.gd" id="22_0nkgo"]
+[ext_resource type="Script" path="res://Code/Game/hp_calculator.gd" id="23_b2urf"]
 
 [sub_resource type="Animation" id="Animation_eaaml"]
 length = 0.001
@@ -780,146 +781,33 @@ animations = [{
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_y51tq")
-_runtime_data = ExtResource("2_kjf7b")
 
 [node name="Background" parent="." instance=ExtResource("3_m7pa7")]
 
-[node name="MusicBars" type="Control" parent="."]
-z_index = 100
-layout_mode = 3
+[node name="MusicBars" parent="." instance=ExtResource("3_32ov7")]
 anchors_preset = 0
-offset_left = -3.0
-offset_top = 92.0
-offset_right = -3.0
-offset_bottom = 92.0
-script = ExtResource("4_1dme2")
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 475.0
+offset_right = 512.0
+offset_bottom = 515.0
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="ColorRect" type="ColorRect" parent="MusicBars"]
-visible = false
-layout_mode = 0
-offset_left = -2.0
-offset_top = 386.0
-offset_right = 521.0
-offset_bottom = 426.0
-color = Color(0.113725, 0.113725, 0.113725, 1)
-
-[node name="Collector" type="Control" parent="MusicBars"]
-anchors_preset = 0
-
-[node name="LeftGroup" type="Control" parent="MusicBars/Collector"]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="BlockGroup1" parent="MusicBars/Collector/LeftGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 76.0
-offset_top = 410.0
-offset_right = 76.0
-offset_bottom = 410.0
-
-[node name="BlockGroup2" parent="MusicBars/Collector/LeftGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 92.0
-offset_top = 410.0
-offset_right = 92.0
-offset_bottom = 410.0
-
-[node name="BlockGroup3" parent="MusicBars/Collector/LeftGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 127.0
-offset_top = 410.0
-offset_right = 127.0
-offset_bottom = 410.0
-
-[node name="BlockGroup4" parent="MusicBars/Collector/LeftGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 143.0
-offset_top = 410.0
-offset_right = 143.0
-offset_bottom = 410.0
-
-[node name="BlockGroup5" parent="MusicBars/Collector/LeftGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 159.0
-offset_top = 410.0
-offset_right = 159.0
-offset_bottom = 410.0
-
-[node name="BlockGroup6" parent="MusicBars/Collector/LeftGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 175.0
-offset_top = 410.0
-offset_right = 175.0
-offset_bottom = 410.0
-
-[node name="BlockGroup7" parent="MusicBars/Collector/LeftGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 210.0
-offset_top = 410.0
-offset_right = 210.0
-offset_bottom = 410.0
-
-[node name="BlockGroup8" parent="MusicBars/Collector/LeftGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 226.0
-offset_top = 410.0
-offset_right = 226.0
-offset_bottom = 410.0
-
-[node name="RightGroup" type="Control" parent="MusicBars/Collector"]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="BlockGroup9" parent="MusicBars/Collector/RightGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 269.0
-offset_top = 410.0
-offset_right = 269.0
-offset_bottom = 410.0
-
-[node name="BlockGroup10" parent="MusicBars/Collector/RightGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 304.0
-offset_top = 410.0
-offset_right = 304.0
-offset_bottom = 410.0
-
-[node name="BlockGroup11" parent="MusicBars/Collector/RightGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 320.0
-offset_top = 410.0
-offset_right = 320.0
-offset_bottom = 410.0
-
-[node name="BlockGroup12" parent="MusicBars/Collector/RightGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 336.0
-offset_top = 410.0
-offset_right = 336.0
-offset_bottom = 410.0
-
-[node name="BlockGroup13" parent="MusicBars/Collector/RightGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 365.0
-offset_top = 410.0
-offset_right = 365.0
-offset_bottom = 410.0
-
-[node name="BlockGroup14" parent="MusicBars/Collector/RightGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 399.0
-offset_top = 410.0
-offset_right = 399.0
-offset_bottom = 410.0
-
-[node name="BlockGroup15" parent="MusicBars/Collector/RightGroup" instance=ExtResource("5_qe3rx")]
-offset_left = 415.0
-offset_top = 410.0
-offset_right = 415.0
-offset_bottom = 410.0
-
-[node name="HitGoblinManager" parent="." instance=ExtResource("4_w6fj2")]
+[node name="HitGoblinManager" parent="." instance=ExtResource("6_3cuvr")]
 z_index = 15
 position = Vector2(248, 221)
 
 [node name="FireingHumans" parent="." instance=ExtResource("14_cyj3i")]
+is_debug = false
 
 [node name="Story" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_utd3h")
 }
 script = ExtResource("11_rnb1c")
-runtime_data = ExtResource("2_kjf7b")
+runtime_data = ExtResource("2_hfc1o")
 
 [node name="MainTextBox" type="NinePatchRect" parent="Story"]
 visible = false
@@ -932,7 +820,7 @@ offset_right = 229.0
 offset_bottom = 422.0
 texture = ExtResource("12_2ymm5")
 region_rect = Rect2(0, 0, 46, 30)
-script = ExtResource("13_p8gi1")
+script = ExtResource("10_hqo1e")
 
 [node name="Label" type="Label" parent="Story/MainTextBox"]
 modulate = Color(0, 0, 0, 1)
@@ -961,7 +849,7 @@ offset_right = 266.0
 offset_bottom = 150.0
 texture = ExtResource("14_xwtnl")
 region_rect = Rect2(0, 0, 46, 30)
-script = ExtResource("13_p8gi1")
+script = ExtResource("10_hqo1e")
 
 [node name="Label" type="Label" parent="Story/MarianTextBox"]
 modulate = Color(0, 0, 0, 1)
@@ -991,7 +879,7 @@ offset_right = 396.0
 offset_bottom = 150.0
 texture = ExtResource("12_2ymm5")
 region_rect = Rect2(0, 0, 46, 30)
-script = ExtResource("13_p8gi1")
+script = ExtResource("10_hqo1e")
 
 [node name="Label" type="Label" parent="Story/AdamTextBox2"]
 modulate = Color(0, 0, 0, 1)
@@ -1011,7 +899,6 @@ one_shot = true
 
 [node name="RandomTextManager" type="Node" parent="Story"]
 script = ExtResource("13_iurd3")
-random_happy_dialoges = ExtResource("14_g2vek")
 
 [node name="DanceManager" type="Node2D" parent="."]
 script = ExtResource("6_fkh8t")
@@ -1085,15 +972,24 @@ wait_time = 0.12
 
 [node name="Goblin" parent="." instance=ExtResource("16_asalf")]
 z_index = 15
-position = Vector2(238, 445)
+position = Vector2(218, 439)
 scale = Vector2(2.39583, 2.39583)
 
 [node name="SecTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="flamed" from="FireingHumans" to="." method="_on_fireing_humans_flamed"]
-[connection signal="flamed" from="FireingHumans" to="Story/RandomTextManager" method="_on_fireing_humans_flamed"]
-[connection signal="human_escaped" from="FireingHumans" to="." method="_on_fireing_humans_human_escaped"]
+[node name="FactorCalculator" type="Node" parent="."]
+script = ExtResource("21_h6pr3")
+_runtime_data = ExtResource("2_hfc1o")
+
+[node name="ScoreCalculator" type="Node" parent="."]
+script = ExtResource("22_0nkgo")
+
+[node name="HpCalculator" type="Node" parent="."]
+script = ExtResource("23_b2urf")
+
+[connection signal="flamed" from="FireingHumans" to="ScoreCalculator" method="_on_fireing_humans_flamed"]
+[connection signal="human_escaped" from="FireingHumans" to="HpCalculator" method="_on_fireing_humans_human_escaped"]
 [connection signal="timeout" from="Story/MainTextBox/QuickTextTimer" to="Story/MainTextBox" method="_on_quick_text_timer_timeout"]
 [connection signal="timeout" from="Story/MarianTextBox/QuickTextTimer" to="Story/MarianTextBox" method="_on_quick_text_timer_timeout"]
 [connection signal="timeout" from="Story/AdamTextBox2/QuickTextTimer" to="Story/AdamTextBox2" method="_on_quick_text_timer_timeout"]

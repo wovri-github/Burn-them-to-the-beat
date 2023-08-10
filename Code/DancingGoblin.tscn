@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://482qvsvj2xx2"]
-
-[ext_resource type="PackedScene" uid="uid://dkour2dh7ebam" path="res://Code/Player.tscn" id="1_4la5i"]
-
-[node name="DancingGoblin" type="Node2D"]
-scale = Vector2(2, 2)
-
-[node name="Goblin" parent="." instance=ExtResource("1_4la5i")]
-modulate = Color(0.827451, 0.807843, 0.8, 1)
