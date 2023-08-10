@@ -3,15 +3,24 @@
 [ext_resource type="PackedScene" uid="uid://bycawr0huid1r" path="res://Code/GUI/Heart.tscn" id="1_22unb"]
 [ext_resource type="Script" path="res://Code/GUI/HP.gd" id="1_xdxiu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h43n7"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uag06"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.282353, 0.282353, 0.282353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.439216, 0.439216, 0.439216, 1)
 
 [node name="HP" type="PanelContainer"]
 offset_left = 23.0
 offset_top = 35.0
-offset_right = 59.0
-offset_bottom = 249.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_h43n7")
+offset_right = 61.0
+offset_bottom = 213.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uag06")
 script = ExtResource("1_xdxiu")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="."]
@@ -32,14 +41,3 @@ layout_mode = 2
 
 [node name="Heart5" parent="HBoxContainer" instance=ExtResource("1_22unb")]
 layout_mode = 2
-
-[node name="Node" type="Node" parent="."]
-
-[node name="Button" type="Button" parent="Node"]
-offset_left = 75.0
-offset_top = 41.0
-offset_right = 124.0
-offset_bottom = 65.0
-text = "-1 hp"
-
-[connection signal="pressed" from="Node/Button" to="." method="_on_button_pressed"]

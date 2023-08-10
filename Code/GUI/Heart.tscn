@@ -1,29 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bycawr0huid1r"]
+[gd_scene load_steps=4 format=3 uid="uid://bycawr0huid1r"]
 
 [ext_resource type="Script" path="res://Code/GUI/tremble.gd" id="2_ypyxs"]
 [ext_resource type="Script" path="res://Code/GUI/Heart.gd" id="4_wfydw"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cp8j8"]
-load_path = "res://.godot/imported/2.bmp-d029c88fb7d20d65860bd61b1b14b949.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_85s34"]
-load_path = "res://.godot/imported/1.bmp-9e5619b5e42a95db18be31b26548a787.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c1pkx"]
-load_path = "res://.godot/imported/0.bmp-145d7117764079aaaa08235435c57d26.ctex"
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_eqhnw"]
-resource_local_to_scene = true
-frames = 3
-pause = true
-frame_0/texture = SubResource("CompressedTexture2D_cp8j8")
-frame_1/texture = SubResource("CompressedTexture2D_85s34")
-frame_1/duration = 1.0
-frame_2/texture = SubResource("CompressedTexture2D_c1pkx")
-frame_2/duration = 1.0
+[ext_resource type="Texture2D" uid="uid://blmd6lj40k6hj" path="res://Assets/Hearts/all_hearts.bmp" id="5_a4v5q"]
 
 [node name="Heart" type="Control"]
-custom_minimum_size = Vector2(36, 36)
+custom_minimum_size = Vector2(36, 32)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -33,25 +15,16 @@ anchor_bottom = 0.5
 offset_left = -18.0
 offset_top = -18.0
 offset_right = 18.0
-offset_bottom = 18.0
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_wfydw")
 
-[node name="Texture" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -18.0
-offset_top = -16.0
-offset_right = 18.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AnimatedTexture_eqhnw")
-
-[node name="Tremble" type="Node" parent="."]
+[node name="Tremble" type="Node" parent="." node_paths=PackedStringArray("node_to_move")]
 script = ExtResource("2_ypyxs")
+node_to_move = NodePath("../Texture")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("5_a4v5q")
+centered = false
+hframes = 3
