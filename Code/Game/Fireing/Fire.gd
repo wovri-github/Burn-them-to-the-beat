@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var flame_big_scale: float = 3
+@export var flame_big_scale: float = 4
 var is_blue = false
 @onready var fires_sprites = $Sprites.get_children()
 

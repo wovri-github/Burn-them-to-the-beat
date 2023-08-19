@@ -2,7 +2,7 @@
 extends Node2D
 
 
-const deviation_sec = 0.180
+const deviation_sec = 0.5
 @export var is_left_goblin_visible: bool = false:
 	set(new_state):
 		is_left_goblin_visible = new_state
@@ -21,7 +21,7 @@ func _ready():
 
 
 func _on_beat(_song_position_in_beats: int, _measure: int, tempo: int):
-	await get_tree().create_timer(1.1).timeout
+	await get_tree().create_timer(0.9).timeout
 	if _song_position_in_beats % 2 == 1:
 		$HitTimerLeft.start(deviation_sec)
 	else:

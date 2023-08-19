@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://baqfjsqpno6w6" path="res://Assets/Game/DialougeBOXFlip.png" id="4_uoy1j"]
 [ext_resource type="Script" path="res://Code/Game/TextBox.gd" id="5_lkgey"]
 [ext_resource type="FontFile" uid="uid://dk1k8buhdg0iv" path="res://Assets/font/bitfont.ttf" id="6_t6tqw"]
-[ext_resource type="PackedScene" uid="uid://dkour2dh7ebam" path="res://Code/Entities/Player.tscn" id="7_iqf0i"]
+[ext_resource type="PackedScene" uid="uid://dkour2dh7ebam" path="res://Code/Entities/goblin.tscn" id="7_iqf0i"]
 [ext_resource type="PackedScene" uid="uid://civnl2k2morb6" path="res://Code/Entities/human.tscn" id="8_cvnda"]
 [ext_resource type="Texture2D" uid="uid://cye4gy8yieujf" path="res://Assets/Game/DialougeBOX.png" id="8_mhi2f"]
 [ext_resource type="PackedScene" uid="uid://blylxnu1biq5n" path="res://Code/Components/shake_c.tscn" id="10_qt2c8"]
@@ -667,6 +667,7 @@ script = ExtResource("1_fkgm3")
 
 [node name="Minotaur" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.690196, 0.690196, 0.690196, 1)
+z_index = 40
 position = Vector2(-91, 292)
 scale = Vector2(4.427, 4.427)
 sprite_frames = SubResource("SpriteFrames_vtunx")
@@ -680,8 +681,8 @@ libraries = {
 [node name="MarianTextBox" type="NinePatchRect" parent="."]
 visible = false
 modulate = Color(1, 0.478431, 0.396078, 1)
-self_modulate = Color(1, 1, 1, 0.666667)
-z_index = 15
+self_modulate = Color(1, 1, 1, 0.937255)
+z_index = 20
 texture_filter = 1
 offset_left = 150.0
 offset_top = 199.0
@@ -715,8 +716,8 @@ scale = Vector2(2.39583, 2.39583)
 
 [node name="MainTextBox" type="NinePatchRect" parent="."]
 visible = false
-self_modulate = Color(1, 1, 1, 0.666667)
-z_index = 15
+self_modulate = Color(1, 1, 1, 0.878431)
+z_index = 20
 texture_filter = 1
 offset_left = 355.0
 offset_top = 390.0
@@ -750,6 +751,7 @@ one_shot = true
 
 [node name="Human" parent="." instance=ExtResource("8_cvnda")]
 visible = false
+z_index = 20
 position = Vector2(539, 391)
 
 [node name="ShakeC" parent="." node_paths=PackedStringArray("node_to_shake") instance=ExtResource("10_qt2c8")]

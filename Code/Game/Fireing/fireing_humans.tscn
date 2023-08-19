@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://be4pifcnr6j4n" path="res://Assets/Game/2d_light.webp" id="6_vrebc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1iue"]
-size = Vector2(28, 138)
+size = Vector2(49, 138)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uoimr"]
 atlas = ExtResource("2_qclpc")
@@ -99,7 +99,7 @@ wait_time = 0.15
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fire"]
-position = Vector2(-1, 0)
+position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_b1iue")
 
 [node name="Sprites" type="Node2D" parent="Fire"]
@@ -116,6 +116,7 @@ offset = Vector2(0, -3)
 position = Vector2(-1, -1)
 color = Color(1, 1, 0.553002, 1)
 energy = 0.5
+range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("6_vrebc")
 
@@ -131,6 +132,7 @@ offset = Vector2(0, -3)
 position = Vector2(-1, -1)
 color = Color(1, 1, 0.553002, 1)
 energy = 0.5
+range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("6_vrebc")
 
@@ -146,6 +148,7 @@ offset = Vector2(0, -3)
 position = Vector2(-1, -1)
 color = Color(1, 1, 0.553002, 1)
 energy = 0.5
+range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("6_vrebc")
 
@@ -161,6 +164,7 @@ offset = Vector2(0, -3)
 position = Vector2(-1, -1)
 color = Color(1, 1, 0.553002, 1)
 energy = 0.5
+range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("6_vrebc")
 

@@ -16,6 +16,7 @@ font_size = 32
 font_size = 32
 
 [node name="UX" type="Control"]
+z_index = 20
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,9 +66,9 @@ label_settings = SubResource("LabelSettings_jd8oq")
 [node name="Factor" type="Control" parent="."]
 visible = false
 anchors_preset = 0
-offset_left = 192.0
+offset_left = 170.0
 offset_top = 7.0
-offset_right = 381.0
+offset_right = 359.0
 offset_bottom = 36.0
 
 [node name="Label" type="Label" parent="Factor"]
@@ -108,8 +109,10 @@ text = "Pause"
 
 [node name="ScoreManager" parent="." instance=ExtResource("6_ga4g5")]
 layout_mode = 1
-offset_top = -152.0
-offset_bottom = -152.0
+offset_left = 1.0
+offset_top = -162.0
+offset_right = 1.0
+offset_bottom = -162.0
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 3

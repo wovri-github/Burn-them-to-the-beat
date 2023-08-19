@@ -5,6 +5,7 @@
 
 [node name="Conductor" type="AudioStreamPlayer"]
 stream = ExtResource("1_aqeif")
+volume_db = -12.0
 script = ExtResource("2_ehdjf")
 
 [node name="OffsetBeatTimer" type="Timer" parent="."]

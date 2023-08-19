@@ -24,3 +24,5 @@ one_shot = true
 
 [node name="HitTimerRight" type="Timer" parent="."]
 one_shot = true
+
+[connection signal="timeout" from="HitTimerLeft" to="." method="_on_timeout"]

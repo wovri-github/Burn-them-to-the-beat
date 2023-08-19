@@ -1,7 +1,7 @@
 extends Node
 
 enum COLOR{RED, BLUE}
-const ANIMATIONS = {
+@export var animations = {
 	COLOR.RED: preload("res://Code/Entities/goblin_red.tres"),
 	COLOR.BLUE: preload("res://Code/Entities/goblin_blue.tres"),
 }
@@ -9,7 +9,7 @@ const ANIMATIONS = {
 var current_color: COLOR = COLOR.RED:
 	set(new):
 		current_color = new
-		node.sprite_frames = ANIMATIONS[current_color]
+		node.sprite_frames = animations[current_color]
 
 
 func _init():
